@@ -1,0 +1,328 @@
+<app-custom-snackbar *ngIf="showSnackbar" [message]="errorMessage" [action]="'Close'" (close)="onSnackbarClose()"
+  [duration]="5000"></app-custom-snackbar>
+
+  <div class="icon-container-wrapper">
+    <div class="row container">
+        <div class="col-md-12 view-toggle">
+            <!-- Refresh Search Criteria Icon with Label -->
+            <span class="icon-container" (click)="resetSearchCriteria()">
+                <i class="fas fa-sync icon-refresh"></i> <!-- FontAwesome Icon for Refresh -->
+                <span class="icon-label">Refresh</span> <!-- Label for the refresh icon -->
+            </span>
+            <!-- List View Toggle Icon with Label -->
+            <span class="icon-container" (click)="toggleViewType('list')">
+                <i class="fas fa-th-list icon-list"></i> <!-- FontAwesome Icon for List View -->
+                <span class="icon-label">List View</span> <!-- Label for the list view icon -->
+            </span>
+            <!-- Grid View Toggle Icon with Label -->
+            <span class="icon-container" (click)="toggleViewType('grid')">
+                <i class="fas fa-th icon-grid"></i> <!-- FontAwesome Icon for Grid View -->
+                <span class="icon-label">Grid View</span> <!-- Label for the grid view icon -->
+            </span>
+            <!-- Sorting Icon with Dropdown and Label -->
+            <span class="icon-container" (mouseenter)="onMouseEnterSortingIcon()" (mouseleave)="onMouseLeaveSortingIcon()">
+                <i class="fas fa-sort icon-sort"></i> <!-- FontAwesome Icon for Sort -->
+                <span class="icon-label">Sort</span> <!-- Label for the sort icon -->
+                <div class="dropdown" *ngIf="showDropdown">
+                    <mat-card class="dropdown-card">
+                        <div class="dropdown-content">
+                            <a *ngFor="let option of sortingOptions" (click)="handleSortOption(option)">
+                                <i class="{{option.value.includes('Asc') ? 'fas fa-sort-amount-up icon-sort-asc' : 'fas fa-sort-amount-down icon-sort-desc'}}"></i> <!-- FontAwesome Icons for Ascending/Descending -->
+                                <span class="icon-label">{{ option.label }}</span> <!-- Labels for sorting options -->
+                            </a>
+                        </div>
+                    </mat-card>
+                </div>
+            </span>
+            <!-- Export Buttons -->
+            <span class="export-buttons mb-3">
+              <button mat-icon-button color="primary" class="mr-2" aria-label="Export to Excel" (click)="exportToExcel()">
+                <i class="fas fa-file-excel icon-excel"></i> <!-- FontAwesome Icon for Excel -->
+                <span class="icon-text">Excel</span>
+              </button>
+              <button mat-icon-button color="primary" class="mr-2" aria-label="Export to CSV" (click)="xportToCSV()">
+                <i class="fas fa-file-csv icon-csv"></i> <!-- FontAwesome Icon for CSV -->
+                <span class="icon-text">CSV</span>
+              </button>
+              <button mat-icon-button color="primary" class="mr-2" aria-label="Export to JSON" (click)="exportToJson()">
+                <i class="fas fa-file-code icon-json"></i> <!-- FontAwesome Icon for JSON -->
+                <span class="icon-text">Json</span>
+              </button>
+              <button mat-icon-button color="primary" class="mr-2" aria-label="Export to Text" (click)="exportToText()">
+                <i class="fas fa-file-alt icon-text"></i> <!-- FontAwesome Icon for Text -->
+                <span class="icon-text">Text</span>
+              </button>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+  
+  
+
+
+
+<div class="container adv-class">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <div class="card advanced-search-card">
+        <div class="card-body">
+          <div class="advanced-search-container">
+            <form (ngSubmit)="onSubmit()" class="row">
+              <div class="form-group row align-items-center">
+                <label for="search-input" class="col-md-4 col-form-label">What document are you looking for?</label>
+                <div class="col-md-5">
+                  <input type="text" class="form-control" id="searchTerm" placeholder="Enter document name"
+                    name="documentName" [(ngModel)]="searchCriteria.documentName"
+                    (ngModelChange)="onDocumentNameChange($event)" [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let documentName of filteredDocumentNames" [value]="documentName">
+                      {{ documentName }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </div>
+                <div class="col-md-3">
+                  <button type="submit" class="btn btn-primary btn-block mb-2 mb-md-0">
+                    <i class="fas fa-search"></i> Search
+                  </button>
+                </div>
+              </div>
+              <!-- Advanced Search Section -->
+              <div class="accordion">
+                <button mat-button class="accordion-toggle-button" type="button" (click)="toggleAccordion()">
+                  <mat-icon class="accordion-icon">{{ accordionVisible ? 'expand_less' : 'expand_more' }}</mat-icon>
+                  <span class="accordion-text">Advanced Search</span>
+                </button>
+                
+                
+                <div class="accordion-content"
+                  [ngStyle]="{'max-height': accordionVisible ? '500px' : '0', 'overflow': 'hidden', 'transition': 'max-height 0.4s ease-in-out'}">
+                  <!-- Advanced search form fields -->
+                  <div class="row mt-3">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="documentType">File Type</label>
+                        <select class="form-control select2" id="fileType" name="fileType" [(ngModel)]="searchCriteria.fileType">
+                          <option value="">Select a File Type</option>
+                          <option *ngFor="let fileType of fileTypes" [value]="fileType">{{ getHumanReadableFileType(fileType) }}</option>
+                        </select>                  
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="creator">Creator</label>
+                        <input type="text" class="form-control" id="creator" placeholder="Enter document creator"
+                          name="createdBy" [(ngModel)]="searchCriteria.createdBy">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <input type="text" class="form-control" id="notes" name="notes"
+                          placeholder="Enter document notes" [(ngModel)]="searchCriteria.notes">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <input type="text" class="form-control" id="comments" name="approverComments"
+                          placeholder="Enter document comments" [(ngModel)]="searchCriteria.approverComments">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Additional rows of form fields -->
+                  <div class="row mt-3">
+                    <div class="col-md-6">
+                      <label for="date">Date</label>
+                      <div class="form-group row">
+                        <label for="fromDate" class="col-sm-2 col-form-label smaller-font">From</label>
+                        <div class="col-sm-5">
+                          <input type="date" class="form-control" name="startDate" id="startDate"
+                            [(ngModel)]="searchCriteria.startDate">
+                        </div>
+                        <label for="toDate" class="col-sm-1 col-form-label smaller-font">To</label>
+                        <div class="col-sm-4">
+                          <input type="date" class="form-control" name="endDate" id="toDate"
+                            [(ngModel)]="searchCriteria.endDate">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="documentStatus">Document Status</label>
+                        <select class="form-control select2" id="documentStatus" name = "documentStatus" [(ngModel)]="searchCriteria.status">
+                          <option value="">Select Document Status</option>
+                          <option value="Approved">APPROVED</option>
+                          <option value="Pending">PENDING</option>
+                          <option value="Rejected">PENDING</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="department">Departments</label>
+                        <select class="form-control select2" id="department" name="department" [(ngModel)]="searchCriteria.department">
+                          <option value="">Select Department</option>
+                           <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form> <!-- End of the form -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div *ngIf="isLoading" class="spinner-container">
+  <mat-progress-spinner mode="indeterminate" [diameter]="50"></mat-progress-spinner>
+</div>
+<div class="container" *ngIf="viewType === 'list' && searchResults.length > 0 && !isLoading">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <div class="card table-card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+              <!-- Select Column -->
+              <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <input type="checkbox" [checked]="isDocumentSelected(element.id)" (change)="toggleTableSelection(element, $event)" />
+                </mat-cell>
+              </ng-container>
+
+              <!-- Other Columns -->
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                <mat-cell *matCellDef="let document, let i=index"> {{(pageIndex * pageSize) + i + 1}} </mat-cell>
+              </ng-container>
+
+              <!-- FileName Column -->
+              <ng-container matColumnDef="documentName">
+                <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
+                <mat-cell *matCellDef="let element" class="text-overflow"> {{element.documentName}} </mat-cell>
+              </ng-container>
+
+              <!-- FileType Column -->
+              <ng-container matColumnDef="fileType">
+                <mat-header-cell *matHeaderCellDef> File Type </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{getHumanReadableFileType(element.fileType)}} </mat-cell>
+              </ng-container>
+
+              <!-- Created On Column -->
+              <ng-container matColumnDef="createDate">
+                <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.createDate | date: 'dd/MM/yyyy'}} </mat-cell>
+              </ng-container>
+
+              <!-- File Size Column -->
+              <ng-container matColumnDef="fileSize">
+                <mat-header-cell *matHeaderCellDef> File Size </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{getHumanReadableFileSize(element.fileSize)}}</mat-cell>
+              </ng-container>
+
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+              </ng-container>
+
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                <mat-cell *matCellDef="let document" class="action-column">
+                  <button mat-icon-button color="primary" title="View" (click)="viewDocument(document.id)">
+                    <i class="far fa-eye"></i>
+                  </button>
+                  <button mat-icon-button color="primary" title="Download" >
+                    <i class="fas fa-cloud-download-alt"></i>
+                  </button>
+                  <button mat-icon-button color="warn" title="Delete">
+                    <i class="fas fa-trash-alt text-danger"></i>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </table>
+          </div>
+          <mat-paginator showFirstLastButtons [length]="searchResults.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+</mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Grid View Section -->
+<div *ngIf="viewType === 'grid' && searchResults.length > 0 && !isLoading" class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <div class="card grid-card">
+        <div class="card-body">
+          <div class="myApp-card-deck">
+            <!-- Existing grid view content -->
+            <div class="myApp-card" *ngFor="let result of searchResults"(click)="viewDocument(result.id)">
+              <!-- Existing content -->
+              <span class="document-icon" *ngIf="getSimplifiedFileType(result.fileType) === 'docx'">
+                <i class="fas fa-file-word icon-blue"></i> {{ result.documentName }}
+              </span>
+              <span class="document-icon" *ngIf="getSimplifiedFileType(result.fileType) === 'pdf'">
+                <mat-icon>picture_as_pdf</mat-icon> {{ result.documentName }}
+              </span>
+              <div class="myApp-card-body">
+                <!-- Conditional rendering for notes -->
+                <p *ngIf="result.notes; else noNotes" class="notes-section">
+                  <span class="myApp-card-text">Notes: </span>{{ result.notes }}
+                </p>
+                <ng-template #noNotes>
+                  <p class="no-notes">No notes available.</p>
+                </ng-template>
+                <p><span class="myApp-card-text">Created By: </span>{{ result.createdBy }}</p>
+                <p><span class="myApp-card-text">Department: </span>{{ result.department }}</p>
+              </div>
+              <div class="myApp-card-footer">
+                <small class="text-muted">Last updated: {{ result.createDate | date:'dd/MM/yyyy' }}</small>
+                <span class="myApp-badge badge-pill badge-primary">{{ result.status }}</span>
+              </div>
+              <!-- Checkbox on the right side -->
+              <div class="checkbox-container">
+                <input type="checkbox" [checked]="isDocumentSelected(result.id)"
+                  (click)="toggleGridSelection(result)" (click) = "$event.stopPropagation()" style="display: none;">
+                <span class="checkmark"></span>
+              </div>
+            </div>
+            <!-- End of existing grid view content -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- No Results Message -->
+<div *ngIf="searchInitiated && !isLoading && searchResults.length === 0" class="no-results-found">
+  <p>No documents found.</p>
+   
+</div>

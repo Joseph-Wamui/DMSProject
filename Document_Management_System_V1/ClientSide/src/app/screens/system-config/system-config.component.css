@@ -1,0 +1,46 @@
+  .custom-file-input {
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  .logo-text{
+    color: rgb(20, 20, 37);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+.header-text{
+    color: rgb(20, 20, 37);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px; /* Adjust the gap between the columns if needed */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.custom-file-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.submit-btn{
+    font-size: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}

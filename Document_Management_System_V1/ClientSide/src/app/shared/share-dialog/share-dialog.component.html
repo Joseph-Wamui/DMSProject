@@ -1,0 +1,69 @@
+
+<div class="container-fluid ">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2 mat-dialog-title><b>Share</b> {{ fileName }}</h2>
+    </div>
+    <div class="col-auto">
+      <button mat-button mat-dialog-close class="close-btn">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div mat-dialog-content class="d-flex justify-content-between align-items-center">
+    <h2 class="me-2">Select User:</h2>
+    <form [formGroup]="searchForm">
+      <mat-form-field>
+        <input
+          type="text"
+          placeholder="Search User Name/Email"
+          matInput
+          formControlName="searchQuery"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let user of filteredUsers" [value]="user">
+            {{ user.firstName }} ({{ user.emailAddress }})
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <button
+      mat-raised-button
+      color="primary"
+      class="add-btn"
+      (click)="shareWithUser()"
+      [disabled]="!searchForm.get('searchQuery')?.value"
+    >
+      Share
+    </button>
+  </div>
+  
+<!-- Add the scrollable container for the table -->
+<div *ngIf="sharedUsers.data.length > 0" class="card w-100">
+  <h2 class="ms-2"><b>Document Shared with:</b></h2>
+  <table mat-table [dataSource]="sharedUsers" class="mat-elevation-z0 w-100">
+    
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let i = index"> {{i + 1}} </td>
+    </ng-container>
+    
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let user"> {{user.fullName}} </td>
+    </ng-container>
+    
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let user"> {{user.emailAddress}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>
+  </table>
+</div>
+

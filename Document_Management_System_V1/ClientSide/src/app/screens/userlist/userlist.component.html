@@ -1,0 +1,120 @@
+
+      <div class="container" style="background-color: white; margin-left:10px; width:100%; max-width:100%">
+        <div class="row align-items-center mb-2">
+          <div class="col-md-3">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Search user</mat-label>
+              <input matInput type="text" placeholder="Search user" [(ngModel)]="searchTerm" (keyup)="applyFilter()">
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-md-3">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Permission</mat-label>
+              <mat-select placeholder="Permission">
+                <mat-option value="admin">Admin</mat-option>
+                <mat-option value="approver">Approver</mat-option>
+                <mat-option value="">User</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+          
+          <div class="col-md-3 button-container">
+            <button mat-raised-button color="primary" class=" creat-btn ml-auto" routerLink="/createRole">Create Role</button>
+            <button mat-raised-button color="primary" class=" creat-btn ml-auto" routerLink="/viewRole">Update Roles</button>
+            <button mat-raised-button color="primary" class=" creat-btn ml-auto" routerLink="/createUser">Create User</button>
+          </div>
+        </div>
+
+        <div class="row me-2 mb-2">
+          <div class="col-md-12 d-flex justify-content-end">
+            <div class="d-flex">
+              <button mat-icon-button class="mr-2" color="primary" (click)="exportToExcel()" aria-label="Export to Excel">
+                <i class="fas fa-file-excel export-icon"></i>
+                <span class="icon-text">Excel</span>
+              </button>
+              <button mat-icon-button class="mr-2" color="primary" (click)="exportToCSV()" aria-label="Export to CSV">
+                <i class="fas fa-file-csv export-icon"></i>
+                <span class="icon-text">CSV</span>
+              </button>
+              <button mat-icon-button class="mr-2" color="primary" (click)="exportToJSON()" aria-label="Export to JSON">
+                <i class="fas fa-file-code export-icon"></i>
+                <span class="icon-text">JSON</span>
+              </button>
+              <button mat-icon-button class="mr-2" color="primary" (click)="exportToText()" aria-label="Export to Text">
+                <i class="fas fa-file-alt export-icon"></i>
+                <span class="icon-text">Text</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="upload-container mt-0">
+          <table class="table table-striped" mat-table [dataSource]="users" matSort class="mat-elevation-z0">
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%;">ID</th>
+              <td mat-cell *matCellDef="let user, let i=index">{{ (pageIndex * pageSize) + i + 1 }}</td>
+            </ng-container>
+        
+            <!-- Document Name Column -->
+            <ng-container matColumnDef="fullName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+              <td mat-cell *matCellDef="let user">{{user.fullName }}</td>
+            </ng-container>
+        
+            <!-- File Type Column -->
+            <ng-container matColumnDef="employeeNumber">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee Number</th>
+              <td mat-cell *matCellDef="let user">{{ user.employeeNumber }}</td>
+            </ng-container>
+        
+            <!-- Created On Column -->
+            <ng-container matColumnDef="emailAddress">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+              <td mat-cell *matCellDef="let user">{{ user.emailAddress }}</td>
+            </ng-container>
+        
+            <!-- File Size Column -->
+            <ng-container matColumnDef="phoneNumber">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+              <td mat-cell *matCellDef="let user">{{ user.phoneNumber }}</td>
+            </ng-container>
+        
+            <!-- Status Column -->
+            <ng-container matColumnDef="department">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Department</th>
+              <td mat-cell *matCellDef="let user">{{ user.department }}</td>
+            </ng-container>
+             <!-- Status Column -->
+             <ng-container matColumnDef="createdOn">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>created On</th>
+              <td mat-cell *matCellDef="let user">{{ user.createdOn }}</td>
+            </ng-container>
+         <!-- Status Column -->
+         <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+          <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+        </ng-container>
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let user" class="">
+                <button mat-icon-button color="primary" class="btn btn-sm" title="Edit" (click)="navigateToUpdateRole(user)">
+                  <mat-icon aria-hidden="false" aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" class="btn btn-sm" title="Delete" (click)="openDeleteConfirmation(user.id, user)">
+                  <mat-icon aria-hidden="false" aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+        
+            <!-- Define header row and data row -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>
+          </table>
+          <div *ngIf="isLoading" class="spinner">
+            <mat-progress-spinner mode="indeterminate" [diameter]="50"></mat-progress-spinner>
+          </div>
+          <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="handlePageChange($event)"></mat-paginator>
+          
+        </div>
+      </div>

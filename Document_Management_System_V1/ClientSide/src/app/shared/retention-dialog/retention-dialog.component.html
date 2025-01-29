@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col ">
+         <h2 mat-dialog-title>Set Retention Period for {{fileName}}</h2>
+        </div>
+         <div mat-dialog-actions class="col-auto">
+             <button mat-button mat-dialog-close class="close-btn"><mat-icon>close</mat-icon></button>
+         </div>
+     </div>
+     <div mat-dialog-content>
+        <mat-radio-group aria-label="Select an option"  [(ngModel)]="retentionOption">
+            <mat-radio-button  color="primary" value="1">Infinite</mat-radio-button>
+            <mat-radio-button color="primary" value="2">Active</mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="retentionOption === '2'" class= "mt-2">
+            <h3>How long do you wish to keep the Document?</h3>
+            <mat-form-field >
+                <mat-label>select end date</mat-label>
+                <input matInput 
+                       [matDatepicker]="retentionDatePicker"                     
+                       id="retentionDate"
+                       name="retentionDate"
+                       required>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="retentionDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #retentionDatePicker></mat-datepicker>
+              </mat-form-field>
+          </div>
+     </div>
+     <div mat-dialog-actions class="save-action">
+        <button mat-raised-button class="bg-primary save-btn">Save</button>
+    </div>
+     
+
+</div>

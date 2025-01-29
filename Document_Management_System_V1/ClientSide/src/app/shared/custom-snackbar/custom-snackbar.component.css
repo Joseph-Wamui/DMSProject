@@ -1,0 +1,66 @@
+.snackbar-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 0, 0,0.8); /* Change background color to red */
+    border-radius: 5px;
+    color: white; /* Set text color to white */
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+    animation: slideInFromTop 0.5s ease-out, bounce 2s ease-out infinite; 
+    
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px); /* Reduced bounce distance */
+    }
+    60% {
+        transform: translateY(-5px); /* Reduced bounce distance */
+    }
+}
+
+
+
+.snackbar-message {
+    flex-grow: 1;
+    margin-right: 16px;
+    padding-left: 10px;
+}
+
+.error-icon {
+    font-size: 24px; /* Increase the size of the icon */
+    margin-right: 10px; /* Adjust the padding between the icon and the text */
+}
+
+
+
+.snackbar-action {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.snackbar-action:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

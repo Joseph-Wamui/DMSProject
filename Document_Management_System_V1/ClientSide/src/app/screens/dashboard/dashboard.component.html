@@ -1,0 +1,147 @@
+<div class="container-fluid">
+
+  <div class="row widgets-row">
+ <div class="col-md-3">
+  <div class="card text-white custom-card " (click)="navigateToWorkflowProgress('PENDING')">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="card-title1 mb-0">Pending Documents</h2>
+      <h2 class="mb-0">{{pendingCount}}</h2>
+    </div>
+    <div class="progress custom-progress-bar">
+      <div class="progress-bar1" role="progressbar" 
+           [style.width.%]="pendingProgressValue" aria-valuenow="progressValue" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div>
+  </div>
+ </div>
+ <div class="col-md-3">
+  <div class="card text-white custom-card" (click)="navigateToWorkflowProgress('APPROVED')">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="card-title1 mb-0">Approved Documents</h2>
+      <h2 class="mb-0">{{approvedCount}}</h2>
+    </div>
+    <div class="progress custom-progress-bar">
+      <div class="progress-bar2" role="progressbar" 
+           [style.width.%]="approvedProgressValue" aria-valuenow="progressValue" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div>
+  </div>
+ </div>
+ <div class="col-md-3">
+  <div class="card text-white custom-card" (click)="navigateToWorkflowProgress('REJECTED')">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="card-title1 mb-0">Rejected Documents</h2>
+      <h2 class="mb-0">{{rejectedCount}}</h2>
+    </div>
+    <div class="progress custom-progress-bar">
+      <div class="progress-bar3" role="progressbar" 
+           [style.width.%]="rejectedProgressValue" aria-valuenow="progressValue" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div> 
+  </div>
+ </div>
+ <div class="col-md-3">
+  <div class="card text-white text-center custom-card">
+    <div class="">
+      <h2 class="card-title1 mb-0">All Documents</h2>
+    </div>
+    <div class="">
+      <h2 class="mb-0">{{totalCount}}</h2>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card welcome-card">
+      <div class="welcome-title">
+        <h1 class="card-title">Welcome Back, <span class='email-text'><em>{{firstName}}</em></span></h1>
+        <div class="welcome-text">
+         <p>We strive to provide seamless, secure and user-friendly solutions that enhance collaboration,<br> streamlline workflow, and unlock the full potential of data. </p>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-background">
+          <!-- Widget card content for the first card -->
+          <h4 class="card-title ms-2">Daily Document Upload</h4>
+          <div class="pie-card">
+            <app-linegraph></app-linegraph> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="recents-card card">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="card-title ms-2">Recent Documents</h4>
+          <!-- Exports if needed -->
+        </div>
+        
+        <div  *ngIf="zeroDocuments" class=" text-center m-2" style="padding:20px;">
+          <h1>You do not have any document(s) to access yet.</h1>
+          <button mat-raised-button color="primary" class="upload-btn" routerLink="/upload">Upload Document</button>
+        </div>
+
+        <div *ngIf="!zeroDocuments" class="mat-table-container">
+          <table mat-table [dataSource]="recentDataSource" class="mat-elevation-z0 demo-table">
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="documentId">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let row; let i = index"> {{i + 1}} </td>
+            </ng-container>
+        
+            <!-- Document Name Column -->
+            <ng-container matColumnDef="documentName">
+              <th mat-header-cell *matHeaderCellDef>Document Name</th>
+              <td mat-cell *matCellDef="let row"> {{row.documentName}} </td>
+            </ng-container>
+        
+            <!-- Uploaded By Column -->
+            <ng-container matColumnDef="uploadedBy">
+              <th mat-header-cell *matHeaderCellDef>Uploaded By</th>
+              <td mat-cell *matCellDef="let row"> {{row.createdBy}} </td>
+            </ng-container>
+        
+            <!-- Date Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let row"> {{row.createDate | date: 'medium'}} </td>
+            </ng-container>
+        
+            <!-- Header and Row Definitions -->
+            <tr mat-header-row *matHeaderRowDef="recentDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: recentDisplayedColumns;" (click)="viewDocument(row.id)" style="cursor:pointer;"></tr>
+          </table>
+        </div>        
+
+      </div>
+    </div>
+
+  </div>
+
+ <!-- <div class="row lineChart-row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-background">
+          <h4 class="card-title ms-2" >Daily Document Upload</h4>
+          <div class="line-card">
+            <app-barchart></app-barchart>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+
+<div class="row">
+  <p class="text-center">loading more data here</p>
+</div> -->

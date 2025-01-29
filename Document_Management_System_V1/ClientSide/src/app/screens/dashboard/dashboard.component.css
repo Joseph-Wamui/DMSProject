@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between; 
+    padding: 10px;
+   }
+   .card {
+    min-width: 300px; 
+   }
+   @media (max-width: 600px) {
+    .card-container {
+       flex-direction: column;
+       align-items: center; 
+    }
+   }
+
+   .chart-container {
+    width: 100%;
+    height: 400px;
+   }
+   
+   .my-chart {
+    width: 100% !important;
+    height: 400px !important;
+   }
+   
+   .recents-card{
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mat-table-container{
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .mat-table{
+    height: 100%;
+    width: 100%;
+  }
+
+  .mat-column-documentId,
+  .mat-column-uploadedBy,
+  .mat-column-documentName,
+  .mat-column-date {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mat-table-container tr:hover {
+    color: #b30c0c;
+  }
+    
+/* .pie-card{
+    height:auto;
+    position: absolute;
+    width: 40%;
+    top: 12%;
+    left: 20%;
+}
+.bar-card{
+    position: absolute;
+    width: 40%;
+    height: auto;
+    
+} */
+/* General card styling */
+/* General card styling */
+/* General container styling */
+.container-fluid {
+    padding: 20px;
+   }
+   
+   /* Row styling */
+   .row {
+    margin-bottom: 20px;
+   }
+   
+   /* Card styling */
+  /* General card styling with hover effects and transitions */
+.card1, .card2, .card3 {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition effect */
+   }
+   
+   /* Hover effect for card1 */
+   .card1:hover {
+    transform: scale(1.02); /* Slightly scale up the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer; /* Increase shadow for a hover effect */
+   }
+   
+   /* Hover effect for card2 */
+   .card2:hover {
+    transform: scale(1.02); /* Slightly scale up the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;/* Increase shadow for a hover effect */
+   }
+   
+   /* Hover effect for card3 */
+   .card3:hover {
+    transform: scale(1.02); /* Slightly scale up the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;/* Increase shadow for a hover effect */
+   }
+   
+   /* Specific card styling */
+   .card1 {
+    background: linear-gradient( to left, #FFFF,  #b4c7e7);
+   }
+   
+   .card2 {
+    background-color: #1eb81e; /* Slightly darker gray */
+   }
+   .card3 {
+    background-color: #b61a1a; /* Even darker gray */
+   }
+   
+   /* Card body styling */
+   .card-body {
+    padding: 20px;
+   }
+   
+   /* Card title styling */
+   .card-title {
+    margin-bottom: 10px;
+    color: #023586; 
+   }
+    /* bargraph.component.css or bargraph.component.sass */
+.card-cover {
+    text-align: center; /* Center the text horizontally */
+   }
+   
+   .card-title {
+    padding: 10px;
+    margin-bottom: 10px; 
+    /* Add some space below the title for better readability */
+   }
+   /* Dark text */
+   .welcome-card{
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: aliceblue;
+   }
+   .card-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+   }
+   .email-text{
+    color: rgb(73, 73, 238);
+    font-style: italic !important;
+   }
+   .welcome-text{
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 2;
+   }
+
+   .card1:hover::after,
+   .card2:hover::after,
+   .card3:hover::after {
+     content: "Click to view more details";
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: rgba(0, 0, 0, 0.7);
+     color: white;
+     padding: 5px 10px;
+     border-radius: 5px;
+     font-size: 12px;
+   }
+   .custom-card {
+    background: linear-gradient(135deg, #A9ACEE , #353BA6); /* Linear gradient background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .card-title1 {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .custom-progress-bar {
+    margin-top: 20px;
+    background-color: #d3d3d3; /* Background of the progress container */
+    border-radius: 8px;
+    height: 14px;
+    overflow: hidden; /* To keep the corners rounded */
+  }
+  
+  .progress-bar1 {
+    background-color: #16cbeb; /* Color of the progress bar (green) */
+    border-radius: 8px;
+  }
+  .progress-bar2 {
+    background-color: #28a745; /* Color of the progress bar (green) */
+    border-radius: 8px;
+  }
+  .progress-bar3 {
+    background-color: #a72828; /* Color of the progress bar (green) */
+    border-radius: 8px;
+  }
+  

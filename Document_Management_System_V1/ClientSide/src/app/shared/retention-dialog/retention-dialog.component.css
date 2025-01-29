@@ -1,0 +1,21 @@
+.close-btn{
+    background-color: inherit;
+    outline: none;
+    border: none;
+}
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+  }
+  .save-action{
+    float: right;
+}
+.save-btn{
+    float: right;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+}
+button:disabled {
+    opacity: 0.5; /* Reduce opacity to indicate disabled state */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+   }

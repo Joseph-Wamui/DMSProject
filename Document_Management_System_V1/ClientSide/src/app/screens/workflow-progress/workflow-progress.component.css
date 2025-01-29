@@ -1,0 +1,59 @@
+    .search-container {
+    margin-left: -600px; /* Adjust this value to move the search bar closer */
+    border-radius: 5px; /* Add border radius to the search container */
+    overflow: hidden; /* Ensure the border radius is applied correctly */
+    display: flex; /* Ensure proper alignment of elements */
+  }
+
+  .search-input {
+    border-radius: 10px !important;
+  }
+
+  .search-icon {
+    margin-left: -60px; /* Adjust as needed to move the icon closer to the "My Documents" text */
+  }
+
+  .search-container .search-icon {
+    border-top-left-radius: 0; /* No rounding on the left */
+    border-bottom-left-radius: 0; /* No rounding on the left */
+    border-top-right-radius: 5px; /* Rounded right side */
+    border-bottom-right-radius: 5px; /* Rounded right side */
+  }
+
+  /* Add horizontal lines */
+.mat-elevation-z8 {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Add colors to the headings */
+.table-heading {
+  background-color: #007bff; /* Blue color */
+  color: white;
+  font-size: 14px;
+}
+
+/* Reduce column width */
+.mat-column-id,
+.mat-column-documentName,
+.mat-column-fileType,
+.mat-column-startedOn,
+.mat-column-currentApproverEmail,
+.mat-column-progressPercentage {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spinner {
+  position: absolute;
+  right: 50%; /* Adjust based on the desired position */
+  transform: translateY(-50%);
+}
+
+/* Icon text and size styling */
+.icon-text {
+  font-size: 8px; /* Adjust as needed */
+  margin-left: 0px; /* Adjust as needed */
+}

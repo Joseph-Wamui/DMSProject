@@ -1,0 +1,75 @@
+<div class="authBackground" id="layoutAuthentication">
+    <div  id="layoutAuthentication_content">
+        <main>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="form-box card shadow-lg border-0 rounded-lg mt-1">
+                            <div class="card-header">
+                                <h1 class="text-center text-uppercase font-weight-dark my-4">Welcome Member!</h1>
+                                <p>Enter Your credentials to Login</p>
+                            </div>
+                            <div class="card-body">
+                                <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                    <mat-form-field class="login-full-width mb-4">
+                                        <mat-label>Email</mat-label>
+                                        <input type="email" matInput formControlName="emailAddress"
+                                            placeholder="Eg. johndoe@example.com">
+                                        <mat-hint>This field is required!</mat-hint>
+                                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                            Please enter a valid email address
+                                        </mat-error>
+                                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                                           A valid Email is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="login-full-width mb-3">
+                                        <mat-label>Password</mat-label>
+                                        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password"
+                                            placeholder="Enter your password">
+                                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                              </button>
+                                        <mat-hint>Your Password must contain atleast  8 digits</mat-hint>
+                                        <mat-error *ngIf="passwordFormControl.hasError('pattern')">
+                                            Password should contain atleast 8 digits
+                                        </mat-error>
+                                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                                            Password is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <div class="form-check mb-3">
+                                        <mat-checkbox class="mat-checkbox-input" color="primary">
+                                        </mat-checkbox>
+                                        <label class="mat-checkbox-label mat-0" for="inputRememberPassword">Remember Password</label>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <div class="button-container">
+                                           <button type="submit" class="btn btn-primary btn-block" style="width:100%; position: relative;"
+                                           [disabled]="loginForm.invalid || loading" >
+                                             <div >Login</div>
+                                           </button>
+                                           <mat-spinner class="spinner" *ngIf="loading" [diameter]="50"></mat-spinner> <!-- Adjust the diameter as needed -->
+                                        </div>
+                                       </div>
+
+
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <a class="btn btn-link text-decoration-none fs-6" routerLink="/auth/resend-password">Forgot Password?</a>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <div class="small"> Need an account?<a class="btn btn-link text-decoration-none fs-6" routerLink="#">Register Now!</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+  </div>

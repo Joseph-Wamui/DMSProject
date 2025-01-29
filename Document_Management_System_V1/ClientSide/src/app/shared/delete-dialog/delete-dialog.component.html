@@ -1,0 +1,9 @@
+<div class="container-fluid text-center">
+    <h2 mat-dialog-title>Delete Confirmation</h2>
+    <mat-dialog-content>Are you sure you want to delete <br><em><b> {{data.documentName}} {{data.firstName }} </b> {{data.email}}</em>?</mat-dialog-content>
+    <mat-dialog-actions class="d-flex justify-content-between">
+      <button #yesButton mat-raised-button (click)="dialogRef.close(false)" class="bg-danger">No</button>
+      <button mat-raised-button type="submit" (click)="dialogRef.close(true)" class="bg-success">Yes</button>
+      
+    </mat-dialog-actions>
+</div>

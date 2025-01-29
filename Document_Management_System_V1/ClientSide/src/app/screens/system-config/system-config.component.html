@@ -1,0 +1,70 @@
+<div class="container-fluid m-1">
+    <div class="header-text">
+        <h1>Company Information</h1>
+    </div>
+    <form  [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Organization Name</mat-label>
+                    <input matInput formControlName="organizationName" placeholder="Enter organization name">
+                    <mat-error *ngIf="companyForm.get('organizationName')?.hasError('required')">Organization Name is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Postal Address</mat-label>
+                    <input matInput formControlName="postalAddress" placeholder="Enter postal address">
+                    <mat-error *ngIf="companyForm.get('postalAddress')?.hasError('required')">Postal Address is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput formControlName="phoneNumber" placeholder="Enter phone number">
+                    <mat-error *ngIf="companyForm.get('phoneNumber')?.hasError('required')">Phone Number is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Office Location</mat-label>
+                    <input matInput formControlName="officeLocation" placeholder="Enter office location">
+                    <mat-error *ngIf="companyForm.get('officeLocation')?.hasError('required')">Office Location is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Country</mat-label>
+                    <input matInput formControlName="country" placeholder="Enter country">
+                    <mat-error *ngIf="companyForm.get('country')?.hasError('required')">Country is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput formControlName="emailAddress" placeholder="Enter email address" type="email">
+                    <mat-error *ngIf="companyForm.get('emailAddress')?.hasError('required')">Email Address is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Website URL</mat-label>
+                    <input matInput formControlName="website_URL" placeholder="Enter website URI">
+                    <mat-error *ngIf="companyForm.get('website_URI')?.hasError('required')">Website URL is required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="custom-file-input-container">
+                <label class="logo-text" for="logo"> Logo Image</label>
+                <img id="logoImage" width="100" height="auto" alt="Company Logo" />
+                <input id="logo" type="file" (change)="onFileChange($event)" class="custom-file-input">
+                <mat-error *ngIf="companyForm.get('logo')?.hasError('required') && companyForm.get('logo')?.touched">Logo is required</mat-error>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button *ngIf="company === null" mat-raised-button class="submit-btn" color="primary" type="submit" [disabled]="companyForm.invalid">SUBMIT</button>
+            <button *ngIf="company !== null" mat-raised-button class="submit-btn" color="primary" type="button" [disabled]="companyForm.invalid" (click)="updateCompanyInfo()">UPDATE</button>
+        </div>
+    </form>
+</div>

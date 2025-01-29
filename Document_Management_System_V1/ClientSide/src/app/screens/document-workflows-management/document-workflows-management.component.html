@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="workflow-template">
+        <h2>Define Workflow Template</h2>
+        <form>
+          <label for="workflowName">Workflow Name:</label>
+          <input type="text" id="workflowName" [(ngModel)]="workflowName">
+
+          <label for="workflowDescription">Description:</label>
+          <textarea id="workflowDescription" [(ngModel)]="workflowDescription"></textarea>
+
+          <label for="workflowAssignedUser">Assigned Users:</label>
+          <textarea id="workflowAssignedUser" [(ngModel)]="workflowAssignedUser"></textarea>
+
+          <label for="workflowDueDate">Due Date:</label>
+          <textarea id="workflowDueDate" [(ngModel)]="workflowDueDate"></textarea>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Workflow Steps:</h2>
+      <form>
+        <div class="workflow-steps">
+          <div *ngFor="let step of workflowSteps; let i = index" class="step">
+            <label>Step {{ i + 1 }}:</label>
+            <input type="text" [(ngModel)]="workflowSteps[i].name">
+            <button (click)="removeStep(i)">Remove</button>
+          </div>
+        </div>
+        <button (click)="addStep()" class="green-button">Add Step</button>
+
+        <button (click)="saveWorkflow()" class="sky-blue-button">Save</button>
+        <button (click)="cancelWorkflow()" class="red-button">Cancel</button>
+      </form>
+    </div>
+    <!-- Configuring Workflow Steps -->
+    <div class="col">
+      <div class="workflow-configuration">
+        <h2>Configure Workflow Steps</h2>
+        <div class="step-config" *ngFor="let step of workflowSteps">
+          <h3>{{ step.name }}</h3>
+          <label>Step Type:</label>
+          <select [(ngModel)]="step.type">
+            <option value="approval">Approval</option>
+            <option value="review">Review</option>
+            <option value="revise">Revision</option>
+            <!-- Add more options as needed -->
+          </select>
+
+          <!-- Additional configuration fields based on step type -->
+          <div *ngIf="step.type === 'approval'">
+            <label>Approvers:</label>
+            <input type="text" [(ngModel)]="step.approvers">
+          </div>
+          <!-- Add more configuration fields for other step types -->
+
+        </div>
+      </div>
+
+
+      <!--actions after workflow has been used-->
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Actions
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">Save Workflow</a></li>
+          <li><a class="dropdown-item" href="#">Delete After Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.privileges-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Two columns */
+    gap: 10px; /* Space between items */
+  }
+
+  .privilege-item {
+    display: flex;
+    align-items: center;
+  }
+  .privileges-scroll-container {
+    max-height: 300px; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .mt-4 {
+    margin-top: 18px;
+  }
+
+  .mb-4 {
+    margin-bottom: 18px;
+  }

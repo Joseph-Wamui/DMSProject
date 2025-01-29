@@ -1,0 +1,54 @@
+/* breadcrumb.component.css */
+.breadcrumb {
+  background-color: hsla(0, 0%, 0%, 0.03);
+  /* Light grey background */
+  padding: 8px 16px;
+  /* Padding around the breadcrumb items */
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  position: relative;
+  padding: 8px 16px;
+  /* Padding inside each item */
+  margin-right: 8px;
+  /* Right margin between items */
+  border-radius: 4px;
+  /* Rounded corners */
+  background-color: white;
+  /* Background color */
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  /* Subtle shadow */
+}
+
+.breadcrumb-item:last-child {
+  margin-right: 0;
+  /* No margin on the last item */
+}
+
+button[disabled] {
+  padding: 0;
+  /* Remove default padding */
+  background-color: transparent;
+  /* Make the background transparent */
+  cursor: pointer;
+  /* Change cursor to pointer for better UX */
+  border: none;
+  /* Remove border */
+  outline: none;
+  /* Remove outline */
+  font-size: inherit;
+  /* Match font size */
+  color: inherit;
+  /* Match text color */
+}
+
+.material-icons {
+  vertical-align: middle;
+  /* Align icon vertically */
+  margin-left: 4px;
+  /* Space between icon and text */
+}

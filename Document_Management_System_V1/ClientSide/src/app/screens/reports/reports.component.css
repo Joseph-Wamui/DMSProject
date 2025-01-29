@@ -1,0 +1,40 @@
+header {
+  background-color: rgb(74, 69, 107);
+   padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+   align-items: center;
+   height: 40px;
+}
+
+.reports{
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.containers {
+  display: flex; /* Arrange labels and inputs horizontally */
+  margin-top: 10px; /* Add spacing below the header */
+}
+
+/* Style for the container when a card is expanded */
+.container .row .col-12.col-md-6.expanded {
+  width: 100%;
+}
+
+/* Style to hide cards when another is expanded */
+.container .row .col-12.col-md-6.hidden {
+  display: none;
+}
+
+/* Optional: style to reset the card to default when not expanded */
+.container .row .col-12.col-md-6 {
+  transition: width 0.3s ease-in-out;
+}

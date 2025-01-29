@@ -1,0 +1,66 @@
+<nav class="sb-topnav navbar navbar-expand-lg navbar-light" >
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ms-3 d-none d-lg-block" routerLink= "/dashboard">
+        <img src="assets/images/emt.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-center">
+    </a>
+    <!-- Sidebar Toggler Button -->
+    <button class="btn btn-link btn-sm order-0 order-lg-0 me-4 me-lg-0" id="sidebarToggle" type="button">
+        <i class=" icon fas fa-bars fa-2x"></i>
+    </button>
+    <h1 class="text-uppercase mt-3 ms-3 d-none d-lg-block" id="sidebarToggle">
+        document management system
+    </h1>
+    <h1 class="d-md-none d-sm-block text-center mt-2">DMS</h1>
+    <!-- Navbar Toggler -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Collapsible -->
+    <div class="collapse navbar-collapse align-items-center" id="navbarNav">
+        <!-- Navbar Search-->
+        <form class="d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <a routerLink="/advancedsearch">
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button" >Search<i
+                            class="fas fa-search ms-3"></i></button>
+                </a>
+            </div>
+        </form>
+        <ul class="navbar-nav ms-2 ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <!-- Dropdown Button -->
+                <a class="nav-link dropdown-toggle position-relative" id="notificationDropdown"  (click)="OpenNotifications()">
+                    <i class="icon fas fa-bell fa-2x"></i>
+                    <!-- Notification dot -->
+                    <span class="position-absolute start-100 translate-middle badge bg-danger rounded-pill">
+                        {{unreadNotificationCount}}
+                        <span class="visually-hidden">New notifications</span>
+                    </span>
+                </a>
+              </li>
+              </ul>
+        <ul class="navbar-nav ms-2 ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown"
+                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="icon fas fa-user fa-2x"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" routerLink="/userprofile">Account<i class=" icon fa fa-cog ms-3" aria-hidden="true"></i>
+                        </a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" (click)="openLogoutConfirmation()">Logout<i class="icon fa fa-sign-out ms-3"
+                                aria-hidden="true"></i>
+                        </a></li>
+                        <li>
+                          <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" routerLink="/changepassword">Change Password&nbsp;&nbsp;&nbsp;<i class="fa fa-key" aria-hidden="true"></i></a>
+                      </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

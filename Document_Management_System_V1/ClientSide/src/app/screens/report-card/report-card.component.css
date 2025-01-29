@@ -1,0 +1,212 @@
+header {
+  background-color: rgb(74, 69, 107);
+   padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+   align-items: center;
+   height: 40px;
+}
+
+.reports{
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.containers {
+  display: flex; /* Arrange labels and inputs horizontally */
+  margin-top: 10px; /* Add spacing below the header */
+}
+
+.file-type-selections {
+  width: auto;
+  margin-right: 20px;
+  background-color: rgb(238, 230, 230);
+}
+
+.reports-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-gap: 20px; /* Gap between cards */
+  position: relative; /* Add this to make the container a positioning context */
+}
+
+.card {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale up the card by 5% on hover */
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body {
+  padding: 15px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card.expanded .card-body {
+  display: flex; /* Display card body when expanded */
+}
+
+.card.expanded {
+  position: absolute;
+  left:auto;
+  width: 83%; /* Make the card fill the width of the container */
+  height: auto; /* Make the card fill the height of the container */
+  max-width: 100%; /* Ensure the card does not exceed the container's width */
+  max-height: 100%; /* Ensure the card does not exceed the container's height */
+  overflow: visible; /* Enable scrolling if the card content exceeds its dimensions */
+  z-index: 1000;
+  cursor: auto;
+}
+
+.card.expanded:hover {
+  transform: none; /* Disable the hover scale effect */
+}
+
+.file-card {
+  display: none; /* Initially hidden */
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid;
+  width: 60%; /* Make the file-card fill the width */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.card.expanded .file-card {
+  display: flex; /* Display file card when the card is expanded */
+}
+.generate-btn{
+  padding: 25px;
+  margin-left: 5px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.input-div{
+  align-items: center;
+  display: flex;
+}
+ .dropdown:hover .dropdown-menu {
+  display: block;
+ }
+
+ .dropdown-menu {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+ }
+
+.collapse-button{
+  border-radius: 5% ;
+  background-color: rgb(74, 69, 107);
+  color:white;
+}
+
+ .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+ }
+
+ @media (max-width: 768px) {
+  .btn-group {
+     flex-direction:initial;
+     align-items: stretch;
+     gap: 5px; /* Adjust the gap for smaller screens */
+  }}
+
+.daterange{
+  display: flex;
+  align-items: center;
+}
+
+.date-range-field{
+  margin-right: 20px;
+}
+
+.generate-report{
+  width: 120px;
+  height: 35px;
+  padding: 25px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border: none;
+  background-color: #007bff;
+  border-radius: 6px;
+}
+
+.generate-report:hover{
+  background-color: #05308d;
+}
+.report-text{
+  color: blue;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.custom-modal-width .modal-dialog {
+  max-width: 100%;
+ }
+ 
+ /* Modal width for larger screens */
+ @media (min-width: 992px) { /* Adjust the breakpoint as needed */
+  .custom-modal-width .modal-dialog {
+     max-width: 700px;
+  }
+ }
+ .spinner {
+  position: absolute;
+  bottom: 10px;
+  left: 60%; /* Adjust based on the desired position */
+  transform: translateY(-50%);
+ }
+ /* Icon text and size styling */
+.icon-text {
+  font-size: 8px; /* Adjust as needed */
+  margin-left: 0px; /* Adjust as needed */
+}
+.privileges-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Two columns */
+  gap: 10px; /* Space between items */
+}
+
+.privilege-item {
+  display: flex;
+  align-items: center;
+}
+.privileges-scroll-container {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: auto;
+}

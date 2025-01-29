@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-8">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="shadow-lg p-5 rounded bg-white">
+        <h2 class="mb-4 text-center">Update User Role</h2>
+
+        <!-- First Name -->
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="firstName"readonly placeholder="Enter your first name" required>
+        </mat-form-field>
+
+        <!-- Last Name -->
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="lastName"readonly placeholder="Enter your last name" required>
+        </mat-form-field>
+
+        <!-- Employee Number -->
+        <mat-form-field appearance="fill">
+          <mat-label>Employee Number</mat-label>
+          <mat-icon matPrefix>badge</mat-icon>
+          <input matInput formControlName="employeeNumber" readonly placeholder="Enter your employee ID" required>
+        </mat-form-field>
+
+        <!-- Email Address -->
+        <mat-form-field appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <mat-icon matPrefix>mail</mat-icon>
+          <input matInput formControlName="emailAddress" readonly placeholder="Enter your email address" required>
+        </mat-form-field>
+
+        <!-- Role -->
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-select formControlName="role" aria-readonly required>
+            <mat-option disabled selected value="">
+              Select your role
+            </mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        
+        <div class="button-container mt-4 text-center">
+          <button type="button" class="btn btn-outline-secondary mr-3" (click)="Cancel()">Cancel</button>
+          <mat-progress-spinner  *ngIf="loading" color="primary" mode="indeterminate" diameter="50"></mat-progress-spinner>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+       
+      </form>
+    </div>
+  </div>
+</div>

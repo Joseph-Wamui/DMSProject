@@ -1,0 +1,176 @@
+/* Remove grid lines from the table */
+.mat-table {
+  border: none;
+}
+
+.mat-header-cell, .mat-cell {
+  border-bottom: none;
+}
+
+.mat-header-row, .mat-row {
+  border-bottom: none;
+}
+
+/* Remove border from paginator */
+.mat-paginator {
+  border: none;
+}
+
+/* Optionally, remove background colors and shadows for a cleaner look */
+.mat-table, .mat-header-cell, .mat-cell, .mat-paginator {
+  background: none;
+  box-shadow: none;
+}
+
+.table-container {
+  border: none;
+}
+.button-container{
+  flex: auto;
+}
+
+.header-cell {
+  border-bottom: none;
+}
+
+/* User management header styling */
+.usermanagement-header {
+  display: flex;
+  justify-content: space-between; /* Adjusts spacing between items */
+  align-items: center; /* Aligns items vertically in the center */
+}
+
+/* Export button styling */
+.export-btn {
+  background-color: #0a0a23;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 25px;
+  min-width: 50px;
+  cursor: pointer;
+  transition: background-color 0.7s;
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.export-btn:hover {
+  background-color: #4169e1;
+}
+
+/* Search bar styling */
+.search-bar {
+  padding: 10px;
+  margin: 10px;
+}
+
+
+
+/* Table header background color */
+th {
+  background-color: #D4E3E5;
+}
+
+/* User table styling */
+.user_table {
+  display: flexbox;
+  min-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Permission container styling */
+.permission-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Joined container styling */
+.joined-container {
+  display: flex;
+  justify-content: center;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Search container styling */
+.search-container {
+  display: flex; /* Make the container a flexbox */
+}
+
+.search-container > div { /* Target all child divs within the container */
+  margin-right: 10px;  /* Add some margin between divs (optional) */
+}
+
+.search-container > div:last-child {  /* Remove margin from the last child */
+  margin-right: 0;
+}
+
+/* Delete button styling */
+.delete-button {
+  background-color: transparent;
+  color: red; 
+  border: none; /* Removes the border */
+  outline: none;
+}
+
+/* Edit button styling */
+.edit-button {
+  background-color: transparent;
+  color: blue;
+  border: none; 
+  outline: none;
+}
+
+/* Alternating row colors in the table */
+.user_table tbody tr:nth-child(odd) {
+  background-color: #d5d7d8; 
+}
+
+.user_table tbody tr:nth-child(even) {
+  background-color: rgb(185, 188, 190);
+}
+
+/* Spinner positioning */
+.spinner {
+  position: absolute;
+  right: 50%; /* Adjust based on the desired position */
+  transform: translateY(-50%);
+}
+
+/* Custom button styling */
+.custom-button {
+  background-color: #3f51b5; /* Change background color */
+  color: white; /* Change text color */
+  font-weight: bold; /* Bold text */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  margin-top: 10px; /* Add some space at the top */
+}
+
+.custom-button:hover {
+  background-color: #303f9f; /* Darker background color on hover */
+}
+
+/* Icon text and size styling */
+.icon-text {
+  font-size: 8px; /* Adjust as needed */
+  margin-left: 0px; /* Adjust as needed */
+}
+
+.icon {
+  font-size: 28px; /* Adjust as needed */
+}
+.creat-btn{
+  padding: 15px;
+  font-size: 15px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  margin-right: 15px;
+}

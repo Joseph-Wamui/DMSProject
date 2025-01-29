@@ -1,0 +1,59 @@
+
+
+  
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+  }
+  
+  .mat-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .mat-header-cell {
+    background-color: #3f51b5; /* Primary color */
+    color: white;
+    font-weight: 600;
+    padding: 16px;
+  }
+  
+  .mat-cell {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .mat-row:hover {
+    background-color: #f1f1f1; /* Light grey on hover */
+  }
+  
+  .mat-header-row {
+    height: 48px;
+  }
+  
+  .mat-row {
+    height: 48px;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    text-align: left;
+  }
+  
+  .icon-text {
+    font-size: 8px; /* Adjust as needed */
+    margin-left: 0px; /* Adjust as needed */
+  }
+  
+.mat-column-documentId,
+.mat-column-documentName,
+.mat-column-fileType,
+.mat-column-department,
+.mat-column-createdBy,
+.mat-column-backUpDate {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+  
+  

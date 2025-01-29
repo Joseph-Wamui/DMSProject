@@ -1,0 +1,43 @@
+services:
+  backend:
+    build:
+      context: ./ServerSide
+    ports:
+      - "6300:6300"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://db:3306/dmsproject?allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=your_password
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./ClientSide  # Path to your Dockerfile
+      dockerfile: Dockerfile  # Specify the Dockerfile name if it's not the default 'Dockerfile'
+    ports:
+      - "4200:80"  # Map port 80 in the container to port 4200 on the host
+    restart: always  # Optional: Restart policy for the container 
+
+  db:
+    container_name: mariadb
+    image: mariadb:10.5
+
+
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: your_password
+      MYSQL_DATABASE: dmsproject
+    ports:
+      - "3306:3306"
+    volumes:
+       - ./data/mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    restart: always
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "8085:80"

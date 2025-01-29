@@ -1,0 +1,47 @@
+/* styles.css */
+html, body { 
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif !important;
+ }
+ a{
+  text-decoration: none;
+}
+
+h2{
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: 500;
+  color: #023586;
+}
+.snackbar-danger {
+    
+    .mdc-snackbar__surface {
+      background-color: red !important;
+      border-radius: 10px;
+      display: relative!important;
+      margin-top:50px !important;
+      
+    }
+
+    /* .mat-mdc-simple-snack-bar{
+        display: relative!important;
+        margin-top:100px !important;
+    } */
+    .mdc-snackbar__label {
+      color: white !important;
+    }
+  }
+   .snackbar-success {
+    .mdc-snackbar__surface {
+      background-color: rgb(64, 216, 64) !important;
+      border-radius: 10px;
+      display: relative!important;
+      margin-top:50px !important;
+    }
+
+  
+    .mdc-snackbar__label {
+      color: white !important;
+      
+    }
+  }

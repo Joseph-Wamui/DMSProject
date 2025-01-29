@@ -1,0 +1,84 @@
+{
+    "family": "GCATeam3-backend",
+    "taskRoleArn": "arn:aws:iam::526401996416:role/GCATeam3-ecs-task-role",
+    "executionRoleArn": "arn:aws:iam::526401996416:role/GCATeam3-ecs-execution-role",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "backend",
+            "image": "526401996416.dkr.ecr.us-east-2.amazonaws.com/gcateam3-backend:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 6300,
+                    "hostPort": 6300,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "SPRING_DATASOURCE_USERNAME",
+                    "value": "gcateam3admin"
+                },
+                {
+                    "name": "SPRING_DATASOURCE_URL",
+                    "value": "jdbc:mysql://gcateam3-db.cfg4siac63k3.us-east-2.rds.amazonaws.com:3306/dmsproject"
+                },
+                {
+                    "name": "SPRING_DATASOURCE_PASSWORD",
+                    "value": "GCATeam3Db!2024"
+                },
+                {
+                    "name": "SPRING_PROFILES_ACTIVE",
+                    "value": "prod"
+                },
+                {
+                    "name": "APPLICATION_SECURITY_JWT_SECRET_KEY",
+                    "value": "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970"
+                },
+                {
+                    "name": "SPRING_JPA_HIBERNATE_DDL_AUTO",
+                    "value": "update"
+                },
+                {
+                    "name": "SPRING_JPA_SHOW_SQL",
+                    "value": "true"
+                },
+                {
+                    "name": "SPRING_JPA_DATABASE_PLATFORM",
+                    "value": "org.hibernate.dialect.MySQLDialect"
+                },
+                {
+                    "name": "SPRING_SECURITY_USER_NAME",
+                    "value": "admin"
+                },
+                {
+                    "name": "SPRING_SECURITY_USER_PASSWORD",
+                    "value": "admin"
+                },
+                {
+                    "name": "SERVER_PORT",
+                    "value": "6300"
+                },
+                {
+                    "name": "SPRING_DATASOURCE_DRIVER_CLASS_NAME",
+                    "value": "com.mysql.cj.jdbc.Driver"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/GCATeam3-backend",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512"
+}

@@ -1,0 +1,62 @@
+<div class="form-container">
+  <h2>User Profile</h2>
+  <form [formGroup]="userProfileForm" (ngSubmit)="onsubmit()" class="shadow-lg p-5 rounded bg-white">
+    <!--Name-->
+    <div class="field-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput formControlName="name" readonly="" [(ngModel)]="fullName">
+      </mat-form-field>
+    </div>
+    
+    <!--Empoyee Number-->
+    <div class="field-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Employee Number</mat-label>
+        <mat-icon matPrefix>badge</mat-icon>
+        <input matInput formControlName="employeeNumber" readonly="" [(ngModel)]="user.employeeNumber">
+      </mat-form-field>
+    </div>
+    
+    <!--Phone Number-->
+    <div class="field-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <mat-icon matPrefix>phone</mat-icon>
+        <input matInput formControlName="phoneNumber" readonly="" [(ngModel)]="user.phoneNumber">
+      </mat-form-field>
+    </div>
+    
+    <!--Email Address-->
+    <div class="field-row">
+      <mat-form-field appearance="fill">
+        <mat-label>EmailAddress</mat-label>
+        <mat-icon matPrefix>mail</mat-icon>
+        <input matInput formControlName="emailAddress" readonly="" [(ngModel)]="user.emailAddress">
+      </mat-form-field>
+    </div>
+
+    <!--Department-->
+    <div class="field-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Department</mat-label>
+        <mat-icon matPrefix>house</mat-icon>
+        <input matInput formControlName="department" readonly="" [(ngModel)]="user.department">
+      </mat-form-field>
+    </div>
+    
+    <!--Role-->
+    <div class="field-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput formControlName="role" readonly="" [(ngModel)]="user.role">
+      </mat-form-field>
+    </div>
+    
+    
+    <button mat-raised-button color="secondary" (click)="cancel()" style="margin-left: 600px;">Cancel</button>
+  
+  </form>
+</div>

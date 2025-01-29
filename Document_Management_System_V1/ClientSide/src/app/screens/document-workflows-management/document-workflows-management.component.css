@@ -1,0 +1,143 @@
+/* Styles for Define Workflow Templates */
+.workflow-template {
+    margin-bottom: 20px;
+  }
+  .workflow-template form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+  }
+  .workflow-template label {
+    margin-bottom: 5px;
+  }
+  .workflow-template input[type="text"],
+  .workflow-template textarea {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+  }
+  .workflow-steps {
+    margin-bottom: 10px;
+  }
+  .workflow-steps .step {
+    margin-bottom: 5px;
+  }
+  .workflow-steps .step label {
+    margin-right: 5px;
+  }
+  .workflow-steps button {
+    margin-top: 5px;
+  }
+  /* Styles for Configuring Workflow Steps */
+  .workflow-configuration .step-config {
+    margin-bottom: 20px;
+  }
+  .workflow-configuration .step-config label {
+    margin-bottom: 5px;
+  }
+  .workflow-configuration .step-config select,
+  .workflow-configuration .step-config input[type="text"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+  }
+  /* Styles for Monitoring Workflow Progress */
+  .workflow-monitoring input[type="text"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+  }
+  .document-list .document {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .document-list .document h3 {
+    margin-bottom: 5px;
+  }
+  .document-list .document p {
+    margin-bottom: 5px;
+  }
+  .document-list .document .progress-bar {
+    background-color: #4CAF50;
+    border-radius: 5px;
+    height: 10px;
+    margin-bottom: 5px;
+    
+  }
+  .document-list .document button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  .document-list .document button:hover {
+    background-color: #0056b3;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+  }
+
+  /* Styles for pending documents */
+.document.pending {
+  background-color: yellow;
+}
+
+/* Styles for in-progress documents */
+.document.in-progress {
+  background-color: green;
+}
+
+/* Styles for completed documents */
+.document.completed {
+  background-color: blue;
+}
+/* styles.css */
+
+/* Custom CSS styles */
+body {
+  background-color: #f8f9fa; /* Light blue background color */
+}
+
+.container {
+  background-color: #e9ecef; /* Light blue background color */
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+input[type="text"],
+textarea {
+  background-color: white; /* White background color for input and textarea */
+  border: 1px solid #ced4da; /* Add some border to differentiate */
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+/* Custom styles for buttons */
+.green-button {
+  background-color: green;
+  color: white;
+}
+
+.red-button {
+  background-color: red;
+  color: white;
+}
+
+.sky-blue-button {
+  background-color: skyblue;
+  color: white;
+}
+
+  
+  

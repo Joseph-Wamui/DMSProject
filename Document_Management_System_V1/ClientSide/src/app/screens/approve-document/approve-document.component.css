@@ -1,0 +1,15 @@
+/* Add this to your CSS file */
+.approval-modal {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Optionally, add some styles to make the modal look nicer */
+  .approval-section .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .approval-section .btn {
+    width: 100%;
+  }
+  

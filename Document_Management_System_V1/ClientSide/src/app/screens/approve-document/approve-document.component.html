@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>You have been asked to approve {{fileName}}</h1>
+      <div class="approval-section approval-modal"> 
+       
+        <div class="form-group col-9">
+          <label for="comments">Approver's Comments:</label>
+          <textarea class="form-control" [(ngModel)]='comments' id="comments" rows="2"></textarea>
+        </div>
+        <div class="card text-bg-light mb-3">
+          <div class="card-body">
+            <h3>Users in Approval Workflow and their comments</h3>
+            <div class="table-responsive">
+              <table mat-table  [dataSource]=" CommentDataSource" class="mat-elevation-z0 ">
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> No. </th>
+                  <td mat-cell *matCellDef=" let i= index"> {{i +1}} </td>
+                </ng-container>
+              
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef>Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.User}} </td>
+                </ng-container>
+
+                <!--Comment column-->
+                <ng-container matColumnDef="comments">
+                  <th mat-header-cell *matHeaderCellDef> Comment </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Comment}} </td>
+                </ng-container>
+
+                 <!--Comment column-->
+                 <ng-container matColumnDef="timestamp">
+                  <th mat-header-cell *matHeaderCellDef> Time </th>
+                  <td mat-cell *matCellDef="let element"> {{element.formattedTimestamp}} </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="DisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: DisplayedColumns;"></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+         <!-- Display the selected user below the button -->
+   
+        <div class="row">
+          <div class="col-sm-6 d-flex justify-content-end">
+            <button  data-bs-dismiss="modal" class="btn btn-primary"  (click)="approveDocument()">APPROVE</button>
+          </div>
+          <div class="col-sm-6 d-flex justify-content-start">
+            <button  data-bs-dismiss="modal" class="btn btn-danger" (click)="rejectDocument()">REJECT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

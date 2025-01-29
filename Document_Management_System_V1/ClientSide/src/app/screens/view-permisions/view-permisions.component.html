@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Update Role</h2>
+    <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-select formControlName="role" required>
+                <mat-option *ngFor="let role of roles" [value]="role" (click)="fetchPrivileges(role)"  >{{ role }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-card *ngIf ="showRoles">
+            <mat-card-content>
+                <h2 class="example-h2">Select Privileges:</h2>
+                <section class="example-section" formArrayName="privileges">
+                    <div class="privileges-scroll-container">
+                        <div class="privileges-container">
+                            <!-- Updated to use privileges instead of privileges3 -->
+                            <div *ngFor="let privilege of privileges; let i = index" class="privilege-item">
+                                <mat-checkbox class="example-margin" color="primary" [formControlName]="i">
+                                    {{ privilege }}
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </mat-card-content>
+            <div class="button-container">
+                <button mat-raised-button class="mt-4 mb-4" color="primary" type="submit">Update Role</button>
+            </div>
+        
+        </mat-card>
+         
+        
+            
+    </form>
+</div>

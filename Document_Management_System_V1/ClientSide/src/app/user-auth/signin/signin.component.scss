@@ -1,0 +1,142 @@
+.authBackground {
+    background-image:
+    url("/assets/img/dms_bg_img.jpg");
+    background-size: cover;
+   background-position: center;
+  }
+  .login-form {
+    width: 100%;
+  }
+  
+  .login-full-width {
+    width: 100%;
+  }
+  .button-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+   }
+   button:disabled {
+    opacity: 0.3; /* Reduce opacity to indicate disabled state */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+   }
+   
+   
+   .btn {
+    padding-right: 30px; /* Adjust based on the size of the spinner */
+   }
+   
+   .spinner {
+    position: absolute;
+    right: 50%; /* Adjust based on the desired position */
+    top: 50%;
+    transform: translateY(-50%);
+   }
+   
+  .form-check{
+    display: flex; 
+    align-items: center;
+    margin-left: 0;
+  }
+  /* styles.css */
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows the items to wrap as needed */
+    justify-content: center; /* Centers the items horizontally */
+  }
+  
+  @media (max-width: 768px) {
+    .flex-container {
+      flex-direction: column; /* Stacks the items vertically */
+    }
+  }
+  
+  .page_title{
+    color:white; 
+    top: 50%; 
+    left: -10%;
+    position: absolute;
+    padding-left: 40px;
+  }
+  
+  .form-box {
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    background-color: rgb(198, 209, 216); // Ensure the form-box is opaque
+   padding: 20px;
+   backdrop-filter: blur(20px); // Apply the blur effect
+   position: absolute;
+   text-align: center;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+  }
+  
+  
+  h6 {
+    text-align: center;
+    color: #2783aa; /* Darker Green */
+    font-weight: 400;
+    font-family: Georgia, serif;
+  }
+  
+  h3 {
+    text-align: center;
+    color: #230d75; /* Darker Green */
+    font-weight: 500;
+    font-family: Georgia, serif;
+  }
+
+   
+   
+  // h2 {
+  //   text-align: center;
+  //   color: #230d75; /* Darker Green */
+  //   font-weight: 600;
+  //   font-family: Georgia, serif;
+  // }
+  
+  
+  // *****************************************************************************************************************************************************************************
+  
+  // .authBackground {
+  //   // background-image: linear-gradient(
+  //   //     rgba(14, 14, 24, 0.8),
+  //   //     rgba(35, 35, 54, 0.8)
+  //   //   ),
+  //   //   url("/assets/images/sean.jpg");
+  
+  //   background-image: linear-gradient(
+  //      rgba(20, 20, 61, 0.586),
+  //      rgba(16, 14, 40, 0.586)
+  //   ),
+  //   // url("/assets/images/sean.jpg");
+  //   url("/assets/images/Kamp1.png");
+  
+    
+  
+  //   height: 100vh;
+  //   width: 100%;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   position: relative;
+  //   //opacity: 0.7;
+  // }
+  
+  // .form-box {
+  //   border-radius: 10px;
+  //   width: 90%;
+  //   max-width: 600px;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   background: #ffffff;
+  //   padding: 50px 50px 50px 50px;
+  //   text-align: center;
+  //   background-color: rgba(255, 255, 255, 0.808);
+  // }
+  

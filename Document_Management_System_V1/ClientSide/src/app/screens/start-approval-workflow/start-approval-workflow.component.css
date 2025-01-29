@@ -1,0 +1,282 @@
+.close-btn{
+  background-color: transparent !important;
+  outline: none;
+  border: none;
+}
+.add-btn{
+  margin-left: 2px;
+  border-radius: 8px;
+  margin-right: 10px; /* Reduce the margin between the button and spinner */
+  padding: 5px 10px; /* Adjust padding for a smaller button */
+  font-size: 14px; /* Adjust font size */
+  min-width: 100px; /* Set minimum width */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.add-btn:hover{
+  background-color: rgb(87, 4, 202); /* Change to a darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.saved-workflows-button {
+  background-color: rgb(64, 180, 219); /* Light blue color */
+  margin-left: 2px;
+  border-radius: 8px;
+  margin-right: 10px; /* Reduce the margin between the button and spinner */
+  padding: 5px 10px; /* Adjust padding for a smaller button */
+  font-size: 14px; /* Adjust font size */
+  min-width: 100px; /* Set minimum width */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .saved-workflows-button:hover {
+    background-color: deepskyblue; /* Change to a darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+  
+.table-container{
+  max-height: 400px; /* Adjust the maximum height as needed */
+  overflow-y: auto;  /* Adds a vertical scrollbar if content exceeds the max-height */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: hidden; /* Ensures no horizontal scrolling */
+}
+
+.card-body {
+  padding-bottom: 20px; /* Ensures some padding at the bottom of the card */
+}
+
+h3 {
+  margin-bottom: 15px; /* Adds spacing between the title and the table */
+}
+
+ul, li {
+  list-style-type: none;
+}
+.spinner {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure the spinner is above the button */
+ }
+.scrollable-table-container {
+  max-height: 700px; /* Set the desired max height */
+  overflow-y: auto;
+}
+.approval-workflow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .document-details,
+  .approval-actions,
+  .invite {
+    margin-top: 16px;
+  }
+  
+  .approval-actions button {
+    margin-right: 8px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .move-after-approval select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .invite input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  
+  .start button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: blue;
+   margin-left: 100px;
+  }
+  .comment-input {
+    height: 50px; /* Adjust the height as needed */
+    background-color: aliceblue;
+    border-radius: 10px;
+    flex-grow: 1;
+  }
+  
+  .invite-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .invite-container input[type="email"] {
+    margin-right: 10px; /* Adjust as needed */
+  }
+  .folder-selection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+  
+  .folder-selection button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .dropdown-icon {
+    cursor: pointer; /* Style the icon for click interaction */
+  }
+  
+  .dropdown-list {
+    display: none; /* Initially hide the dropdown list */
+    position: absolute; /* Position it relative to the input */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .dropdown-menu {
+    min-width: 200px; /* Adjust this value as needed */
+  }
+  
+  .dropdown-list.show { /* Style for showing the dropdown list */
+    display: block;
+  }
+  .card-header{
+    color: blue;
+  }
+  .selected-emails {
+    margin-top: 10px;
+  }
+  
+  .selected-email {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .selected-email span {
+    margin-right: 10px;
+  }
+  
+  .selected-email button {
+    margin-left: 5px;
+    visibility: visible;
+  }
+  
+  .btn-danger {
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+  
+ /* Custom styles for spacing */
+.document-details {
+  margin-bottom: 20px; /* Adds spacing below the document details */
+}
+
+.dropdown {
+  margin-bottom: 50px; /* Adds spacing below the dropdown */
+  margin-top: 20px; /* Adjust this value as needed */
+}
+
+.btn-group {
+  margin-left: 20px; /* Adds spacing to the left of the button group */
+  background-color: white; color: black;
+}
+.resolution-input {
+  margin-bottom: 20px; /* Adds spacing below the resolution input field */
+}
+.hidden {
+  display: none;
+}
+.delete-button {
+  background-color: transparent;
+  color: red; 
+  border: none; /* Removes the border */
+  outline: none;
+ }
+  
+ .dropdown-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dropdown-table tr {
+  cursor: pointer;
+}
+
+.dropdown-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-table td:hover {
+  background-color: #f1f1f1;
+}
+.selected-option {
+  font-weight: bold;
+  color: #007bff;
+}
+.mt-2 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+}
+.text-green {
+  color: green;
+}
+
+.text-red {
+  color: red;
+}
+.spinner {
+  position: absolute;
+  bottom: 10px;
+  left: 60%; /* Adjust based on the desired position */
+  transform: translateY(-50%);
+ }
+ .add-comment-btn {
+  /* Add your desired styles here */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-comment-btn:hover {
+  background-color: #0056b3;
+}
+
+.approvers-header{
+  text-align: center;
+}
+.approvers-list {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center; /* Center the list items */
+}
+
+  
+ 

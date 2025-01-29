@@ -1,0 +1,336 @@
+<div class="container-fluid ">
+  <div class="row">
+    <!-- 80% width column -->
+    <div class="col-lg-9 col-md-12 form-column">
+      <!-- Wrap the column content inside a div with fixed height and overflow -->
+      <form>
+        <div class="scrollable-column">
+          <div class="form-group document-info card">
+            <div class="container">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <div class="row align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="toggleDocumentViewer()">
+                    <div class="col-auto">
+                      <img [src]="getIconPath(fileName)" alt="Document Icon" class="icon" />
+                    </div>
+                    <div class="col">
+                      <span class="name" style="color:#023586;">{{ fileName }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- Modal start -->
+            <div
+             class="modal fade custom-modal-width"
+              id="exampleModal"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="exampleModalLabel">
+                      {{ fileName }}
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <ngx-doc-viewer
+                      *ngIf="showDocumentViewer"
+                      [url]="fileURL"
+                      viewer="url"
+                      style="width: 100%; height: 70vh"
+                    ></ngx-doc-viewer>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Modal end-->
+            <div class= "card item-card">
+              <div class="form-group">
+                <h2>Edit Document Name</h2>
+                <mat-form-field class="input-field">
+                  <mat-label>Name:</mat-label>
+                  <input
+                    matInput
+                    class="custom-input"
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Document Name"
+                    [(ngModel)]="fileName"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class= "card item-card">
+              <div class="form-group">
+                <h2>Set Document Location</h2>
+                <mat-form-field class="input-field">
+                  <mat-label>Location:</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    id="location"
+                    name="location"
+                    [(ngModel)]="locationInput"
+                    placeholder="Eg. top shelf"
+                  />
+                  <mat-hint align="start">eg. Top shelf</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class= "card item-card">
+              <div class="form-group">
+                <h2>Type Tags </h2>
+                <mat-form-field class="input-field">
+                  <mat-label>Tags:</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    id="tags"
+                    name="tags"
+                    [(ngModel)]="tagsInput"
+                    placeholder="Eg. Tag"
+                  />
+                  <mat-hint align="start">Type Tags separated by commas</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class= "card  item-card">
+              <div class="form-group">
+                <h2>Type a Note Here </h2>
+                <mat-form-field class="input-field">
+                  <mat-label>Notes:</mat-label>
+                  <textarea
+                    matInput
+                    id="notes"
+                    name="notes"
+                    placeholder="Type here"
+                    [(ngModel)]="notes"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="card item-card">
+              <div class="row">
+                <h2>Select Date</h2>
+                <div class="form-group col-md-6">
+                  <label for="uploadDate">Upload Date:</label>
+                  <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput 
+                           [matDatepicker]="uploadDatePicker"                     
+                           id="uploadDate"
+                           name="uploadDate"
+                           [(ngModel)]="todayDate"
+                           required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="uploadDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #uploadDatePicker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6 float-date">
+                  <label for="dueDate">Due Date:</label>
+                  <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput 
+                           [matDatepicker]="dueDatePicker"                     
+                           id="dueDate"
+                           name="dueDate"
+                           (dateChange)="onDueDateChange($event)"
+                           [(ngModel)]="dueDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #dueDatePicker></mat-datepicker>
+
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            
+            <!-- <div class= "card item-card">
+              <h2>Link with a related Document </h2>
+              <div class="form-group d-flex mt-3">
+                <mat-form-field class="item-input-field">
+                  <mat-label>Related Items:</mat-label>
+                  
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="Item Id/Name"
+                    [(ngModel)]="document2Name"
+                    id="relatedItems"
+                    name="relatedItems"
+                    value=""
+                  />
+                </mat-form-field>
+                <div class="col-md-4 ms-2">
+                  <input
+                    type="file"
+                    (change)="onFileSelected($event)"
+                    style="display: none"
+                    #fileInput
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-primary add-item-button"
+                    (click)="fileInput.click()"
+                  >
+                    Add Item
+                  </button>
+                </div>
+              </div>
+            </div> -->
+            <div class="Ocr-prompt d-flex">
+              <h2>Do you want to perform OCR for the document?</h2>
+              <div class="ms-4">
+                <button type="button" class="btn btn-primary me-5" (click)="openPerformOCR()">Yes</button>
+                <button type="button" class="btn btn-danger" (click)="closePerformOCR()">No</button>
+              </div>
+            </div>
+            <div *ngIf="showCard" class="card item-card">
+              <div class="form-group">
+                <h2>What do you want to capture?</h2>
+                <mat-form-field class="input-field">
+                  <mat-label>Details to Capture</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    id="detailsToCapture"
+                  name="detailsToCapture"
+                  placeholder="eg. Name, IdNo, certNo"
+                  (keydown.enter)="addDetails($event)"
+                  [(ngModel)]="details"
+                  />
+                  <mat-hint align="start">Type a Key and press ENTER</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="key-list mt-3 mb-3">
+                <button
+                  *ngFor="let key of keys; let i = index"
+                  class="key-button ms-2"
+                >
+                  {{ key }}
+                  <span class="delete-icon ms-2" (click)="removeKey(i)">X</span>
+                </button>
+              </div>
+              <table *ngIf="showOcrResults" class="table">
+                <thead>
+                   <tr>
+                     <th>Index</th>
+                     <th>Keys</th>
+                     <th>Values</th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let item of transformedData; let i = index">
+                     <td>{{i + 1}}</td>
+                     <td>{{item.key}}</td>
+                     <td>{{item.value}}</td>
+                   </tr>
+                </tbody>
+               </table>
+            </div>
+            <div class="capture-btn d-flex justify-content-end me-3" style="position: relative;">
+              <button
+              *ngIf = "saveOnly"
+                 type="submit"
+                 class="btn btn-primary btn-block"
+                 (click)="ocrCapture()"
+                 [disabled]="loading">
+                 Save & Capture
+              </button>
+              <button
+              *ngIf = "!saveOnly"
+              type="submit"
+              class="btn btn-primary btn-block"
+              (click)="saveDocumentOnly()"
+              [disabled]="loading">
+              Save 
+           </button>
+              <mat-spinner class="spinner" *ngIf="loading" [diameter]="50"></mat-spinner>
+             </div>
+        </div>
+      </form>
+    </div>
+    <!-- 20% width column -->
+    <div *ngIf="uploadSuccess" class="col-lg-3 col-md-12" > 
+      <div class="card right-card scrollable-column">
+        <div class="card document-info">
+          <h2 class="mb-0">Share with:</h2> <!-- Adjust the mb class as needed -->
+          <button mat-button class="d-inline-flex custom-button " (click)="openShareDialog()">
+              <mat-icon>share</mat-icon>
+              <span class="ms-1 fs-5">Edit</span><!-- ms-1 adds a small space between the icon and text -->
+          </button>
+      </div>
+<!--      <div class="card document-info">
+        <h2 class="mb-0">Set Retention:</h2> 
+        <button mat-button class="d-inline-flex custom-button " (click)="openRetentionDialog()">
+          <mat-icon>av_timer</mat-icon>
+            <span class="ms-1">Edit</span> 
+        </button>
+    </div>-->
+   <!--   <div class="card"></div>-->
+      <div class="card mt-4">
+        <button
+        (click)= 'openWorkflowDialog()'
+        type="buttons col-4"
+        class="btn btn-primary">
+        Start Approval Workflow
+      </button>
+      </div>
+      <div class="card mt-4">
+        <button
+        *ngIf="!QRCodeGenerated"
+        type="buttons col-4"
+        class="btn btn-primary"
+        (click)="generateQRCode()">
+        Generate QR Code
+      </button>
+      <button
+      *ngIf="QRCodeGenerated"
+      type="buttons col-4"
+      class="btn btn-primary"
+      (click)="generateQRCode()">
+      Regenerate QR Code
+    </button>
+      </div>
+      <div class="card QRCode-card mt-4" *ngIf="QRCodeGenerated">
+        <div class="card-body">
+          <img [src]="QRCode" alt="QR Code" class="img-fluid">
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="capture-btn d-flex justify-content-end me-3" style="position: relative;">
+    <button
+    routerLink="/mydocuments"
+       type="submit"
+       class="btn btn-primary btn-block"
+       [disabled]="!uploadSuccess">
+       Complete
+    </button>
+   </div>
+</div>

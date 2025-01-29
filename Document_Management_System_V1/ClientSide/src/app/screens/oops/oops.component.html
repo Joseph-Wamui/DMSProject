@@ -1,0 +1,228 @@
+<div class="container">
+  <!-- Backup Settings Card -->
+  <div class="card">
+    <div class="card-header">Backup Settings</div>
+    <mat-tab-group>
+      <!-- Backup Now Tab -->
+      <mat-tab label="Backup Now" class="backup-tab">
+        <div class=" card-content">
+          <div class="form-group">
+            <form [formGroup]="backupForm" (ngSubmit)="backupDocuments()">
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Select Backup Type</mat-label>
+                  <mat-select formControlName="isRemote">
+                    <mat-option [value]="0">Select Value</mat-option>
+                    <mat-option [value]="true">Remote Backup</mat-option>
+                    <mat-option [value]="false">Local Backup</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <!-- Conditional rendering based on the selected value -->
+              <div *ngIf="backupForm.get('isRemote')?.value === false" class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Select Backup Location</mat-label>
+                  <input matInput formControlName="location" placeholder="Enter backup location" required>
+                </mat-form-field>
+              </div>
+              <div *ngIf="backupForm.get('isRemote')?.value === true">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter IP Address</mat-label>
+                    <input matInput formControlName="ipAddress" placeholder="Enter IP address" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter Port Number</mat-label>
+                    <input matInput formControlName="portNo" placeholder="Enter Port Number" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter Database Name</mat-label>
+                    <input matInput formControlName="dbName" placeholder="Enter Database Name" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter Username</mat-label>
+                    <input matInput formControlName="userName" placeholder="Enter Username" required>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter Database Password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Enter Database Password" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="submit-button">
+                <button mat-raised-button type="submit" color="primary" [disabled]="loadingBackup">
+                  Backup Now
+                </button>
+                <div class="spinner-overlay" *ngIf="loadingBackup">
+                  <mat-spinner class="spinner" [diameter]="30"></mat-spinner>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Schedule Backups Tab -->
+      <mat-tab label="Schedule Backups" class="backup-tab">
+        <div class="tab-content form-group">
+          <div class="grid-container">
+            <mat-form-field appearance="outline" class="frequency-field" required>
+              <mat-label>Backup Frequency</mat-label>
+              <mat-select [(value)]="backupFrequencyUnit">
+                <mat-option value="minutes">Minutes</mat-option>
+                <mat-option value="hours">Hours</mat-option>
+                <mat-option value="days">Days</mat-option>
+                <mat-option value="months">Months</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="frequency-value-field" required>
+              <mat-label>Value</mat-label>
+              <input matInput type="number" [(ngModel)]="backupFrequencyValue" placeholder="Enter period">
+            </mat-form-field>
+          </div>
+          <div class="submit-button">
+            <button mat-raised-button color="primary" type="submit" (click)="submitBackupSettings()">Submit</button>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- View Backups Tab -->
+      <mat-tab label="View Backups" class="backup-tab">
+        <div class="tab-content grid-container">
+          <button mat-raised-button color="accent" (click)="showBackedUpDocuments()">BackedUp Documents</button>
+          <button mat-raised-button color="warn" (click)="restore()">Restore</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+
+
+<!-- Archiving Settings Card -->
+<div class="card">
+  <div class="card-header">Archiving Settings</div>
+  <mat-tab-group>
+    <!-- Archive Now Tab -->
+    <mat-tab label="Archive Now" class="backup-tab">
+      <div class="tab-content card-content">
+        <div class="form-group">
+          <form [formGroup]="archivingForm">
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Select Archiving Type</mat-label>
+                <mat-select formControlName="isRemoteArchive">
+                  <mat-option [value]="0">Select Value</mat-option>
+                  <mat-option [value]="true">Remote Archiving</mat-option>
+                  <mat-option [value]="false">Local Archiving</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="archivingForm.get('isRemoteArchive')?.value === false" class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Select Archiving Location</mat-label>
+                <input matInput formControlName="archiveLocation" placeholder="Enter Archive location" required>
+              </mat-form-field>
+            </div>
+            <div *ngIf="archivingForm.get('isRemoteArchive')?.value === true">
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter IP Address</mat-label>
+                  <input matInput formControlName="archiveIpAddress" placeholder="Enter IP address" required>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter Port Number</mat-label>
+                  <input matInput formControlName="archivePortNo" placeholder="Enter Port Number" required>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter Database Name</mat-label>
+                  <input matInput formControlName="archiveDbName" placeholder="Enter Database Name" required>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter Username</mat-label>
+                  <input matInput formControlName="archiveUserName" placeholder="Enter Username" required>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter Database Password</mat-label>
+                  <input matInput type="password" formControlName="archivePassword" placeholder="Enter Database Password" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="submit-button">
+              <button mat-raised-button type="submit" color="primary" (click)="archiveDocuments()">
+                Archive Now
+              </button>
+              <div class="spinner-overlay" *ngIf="loadingArchive">
+                <mat-spinner class="spinner" [diameter]="30"></mat-spinner>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Schedule Archiving Tab -->
+    <mat-tab label="Schedule Archiving" class="backup-tab">
+      <div class="tab-content form-group">
+        <div class="grid-container">
+          <mat-form-field appearance="outline" class="frequency-field" required>
+            <mat-label>Archiving Frequency</mat-label>
+            <mat-select [(value)]="archivingFrequencyUnit">
+              <mat-option value="minutes">Minutes</mat-option>
+              <mat-option value="hours">Hours</mat-option>
+              <mat-option value="days">Days</mat-option>
+              <mat-option value="months">Months</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="frequency-value-field" required>
+            <mat-label>Value</mat-label>
+            <input matInput type="number" [(ngModel)]="archivingFrequencyValue"   (ngModelChange)="showretentionPeriod()" placeholder="Enter period">
+          </mat-form-field>
+        </div>
+
+        <!-- Conditional rendering of the Retention Period field -->
+        <div *ngIf="showRetentionPeriod" class="form-group">
+          <mat-form-field appearance="outline" class="retention-period-field" required>
+            <mat-label>Retention Period (days)</mat-label>
+            <mat-select [(value)]="archivingRetentionPolicy">
+              <mat-option value="1 Month">1 Month</mat-option>
+              <mat-option value="3 Months">3 Months</mat-option>
+              <mat-option value="6 Months">6 Months</mat-option>
+              <mat-option value="1 Year">12 Months</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="submit-button">
+          <button mat-raised-button color="primary" type="submit" (click)="submitArchivingSettings()" >
+            Submit
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- View Archive Tab -->
+    <mat-tab label="View Archive" class="backup-tab">
+      <div class="tab-content grid-container">
+        <button mat-raised-button color="accent" (click)="showArchivedDocuments()">Archived Documents</button>
+        <button mat-raised-button color="warn" (click)="showArchivedDocuments()">Restore</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+</div>

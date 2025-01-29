@@ -1,0 +1,523 @@
+/* Optional styles for advanced search page */
+
+h1 {
+  text-align: center;
+  color: rgb(56, 56, 56); /* Center the text and change the color */
+}
+
+
+.filter-by {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem; /* Add some space below the filter section */
+}
+
+
+.accordion-button {
+  width: auto; /* Adjust the width as needed */
+  padding: 5px 10px; /* Adjust the padding as needed */
+  border-radius: 5px; /* This applies rounded corners */
+  transition: background-color 0.3s ease; /* Optional: Adds a smooth transition effect when hovering */
+ }
+ 
+ .accordion-button:hover {
+  background-color: #007bff; /* Optional: Changes the button's background color on hover */
+  color: white; /* Optional: Changes the button's text color on hover */
+ }
+ 
+ .accordion-content {
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+ }
+ 
+ /* Show all fields when the accordion is toggled */
+ .accordion-content.show .form-group {
+  display: block;
+ }
+
+ .accordion-toggle-button {
+  color: #ffffff;
+  background-color: #0D6EFD; /* Change to your desired background color */
+}
+
+.accordion-toggle-button:hover {
+  background-color: #303f9f; /* Darker shade for hover effect */
+}
+.accordion-text {
+  color: #ffffff; /* Change to your desired text color */
+}
+.accordion-icon {
+  color: white;
+}
+
+
+ .smaller-font {
+  font-size: 12px;
+}
+
+
+input[type="text"], input[type="date"], .select1, .select2 {
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  color: rgb(56, 56, 56); /* Text color remains black */
+  background-color: rgba(197, 197, 197, 0.7); /* Semi-transparent white background */
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+input[type="text"]::placeholder, input[type="date"]::placeholder {
+  color: #8b8b8b;
+}
+
+label {
+  /* Style properties for all labels */
+  font-weight: bold;
+  color: rgb(56, 56, 56); /* Change label color to white */
+  margin-bottom: 5px; /* Add spacing below labels */
+  display: block;
+}
+
+/*Background image of the advanced search page*/
+.advanced-search-container {
+  background-image: url("src/assets/images/background/find-148857_1280.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.6); /* Adjust opacity (0 for transparent, 1 for solid) */
+  background-blend-mode: lighten; /* Change to lighten */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.checkbox-group{
+  margin-left: 50px;
+}
+
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.custom-table {
+width: 100%;
+border-collapse: collapse;
+}
+
+
+
+@media (max-width: 768px) {
+.custom-table th,
+.custom-table td {
+   padding: 8px; /* Reduce padding on smaller screens */
+   text-align: left;
+}
+}
+
+
+.custom-table th {
+background: linear-gradient(to right, #bac4c7, #EBF3F5, #EBF3F5, #bac4c7); /* Blue gradient with fading edges */
+color: #000000; /* Text color for table header */
+}
+
+.custom-table tbody tr:nth-child(even) {
+background-color: #c9c9c9; 
+}
+
+.custom-table tbody tr:nth-child(odd) {
+background-color: #fff; /* White background color for odd rows */
+}
+
+.custom-table tbody tr:hover {
+background-color: #e2e6ea; /* Hover color for table rows */
+}
+
+.action-btn:hover {
+background-color: #f0f0f0; /* Hover background color for action buttons */
+}
+
+
+
+
+.icon-container {
+  display: inline-flex; /* Use inline-flex for alignment */
+  align-items: center; /* Align items vertically in the middle */
+  justify-content: start; /* Start alignment for the icon and label */
+  cursor: pointer; /* Optional: Change cursor to pointer for clickable icons */
+  margin-right: 25px; /* Adjust spacing between icons */
+}
+
+.icon-container mat-icon {
+font-size: 15px; /* Adjust the size as needed */
+}
+
+/* Individual icon colors */
+.icon-container:nth-child(1) mat-icon {
+color: #007bff; /* Blue color for the first icon */
+}
+
+.icon-container:nth-child(2) mat-icon {
+color: #28a745; /* Green color for the second icon */
+}
+
+.icon-container:nth-child(3) mat-icon {
+color: #dc3545; /* Red color for the third icon */
+}
+
+.icon-container:nth-child(4) mat-icon {
+color: #ffc107; /* Yellow color for the fourth icon */
+}
+
+.icon-container:nth-child(5) mat-icon {
+color: #6610f2; /* Purple color for the fifth icon */
+}
+
+.icon-container:nth-child(6) mat-icon {
+color: #007bff; /* Blue color for the share icon */
+}
+
+.icon-container:nth-child(7) mat-icon {
+color: #28a745; /* Green color for the view list icon */
+}
+
+.icon-container:nth-child(8) mat-icon {
+color: #dc3545; /* Red color for the view grid icon */
+}
+
+.icon-container:nth-child(9) mat-icon {
+color: #ffc107; /* Yellow color for the help icon */
+}
+
+.icon-container:nth-child(10) mat-icon {
+color: #6610f2; /* Purple color for the feedback icon */
+}
+
+/* Individual hover effects for icons */
+.icon-container:nth-child(1):hover mat-icon {
+color: #0056b3; /* Darker blue on hover for the first icon */
+}
+
+.icon-container:nth-child(2):hover mat-icon {
+color: #218838; /* Darker green on hover for the second icon */
+}
+
+.icon-container:nth-child(3):hover mat-icon {
+color: #c82333; /* Darker red on hover for the third icon */
+}
+
+.icon-container:nth-child(4):hover mat-icon {
+color: #ffae00; /* Darker yellow on hover for the fourth icon */
+}
+
+.icon-container:nth-child(5):hover mat-icon {
+color: #5600e3; /* Darker purple on hover for the fifth icon */
+}
+
+.icon-container:nth-child(6):hover mat-icon {
+color: #0056b3; /* Darker blue on hover for the share icon */
+}
+
+.icon-container:nth-child(7):hover mat-icon {
+color: #218838; /* Darker green on hover for the view list icon */
+}
+
+.icon-container:nth-child(8):hover mat-icon {
+color: #c82333; /* Darker red on hover for the view grid icon */
+}
+
+.icon-container:nth-child(9):hover mat-icon {
+color: #ffae00; /* Darker yellow on hover for the help icon */
+}
+
+.icon-container:nth-child(10):hover mat-icon {
+color: #5600e3; /* Darker purple on hover for the feedback icon */
+}
+
+/* Ensure the parent container of .icon-container-wrapper stretches to the full width */
+.container-fluid {
+width: 100%;
+}
+
+.icon-container-wrapper {
+position: -webkit-sticky; /* For Safari */
+position: sticky;
+top: 55px;
+z-index: 1000; /* Ensures the sticky div stays above other content */
+background: linear-gradient(to right, #bac4c7, #EBF3F5, #EBF3F5, #bac4c7); /* Blue gradient with fading edges */
+padding: 3px; /* Adjust as needed */
+color: #fff; /* White text color for better contrast with the background */
+width: 100%; /* Ensure the wrapper takes up the full width */
+box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.document-icon {
+display: inline-flex;
+align-items: center;
+margin-right: 10px; /* Space between icons */
+}
+
+.document-icon mat-icon {
+font-size: 24px; /* Adjust the size of the icons */
+margin-right: 5px; /* Space between icon and label */
+}
+
+.document-icon:nth-child(1) mat-icon {
+color: #e53935; /* Red for PDF */
+}
+
+.document-icon:nth-child(2) mat-icon {
+color: #43a047; /* Green for Word */
+}
+
+.document-icon:nth-child(3) mat-icon {
+color: #2962ff; /* Blue for Image */
+}
+
+.document-icon:nth-child(4) mat-icon {
+color: #607d8b; /* Grey for Other */
+}
+.icon-blue { 
+color: blue;
+}
+
+
+/* Container for the grid view */
+.myApp-card-deck {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-bottom: 20px;
+}
+
+/* Individual cards */
+.myApp-card {
+flex: 0 0 calc(25% - 20px); /* Adjust the width as needed */
+margin: 8px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+cursor: pointer; /* Changes cursor to a hand icon on hover */
+padding: 5px;
+background: linear-gradient(to right, #bac4c7, #EBF3F5, #EBF3F5, #bac4c7);
+position: relative;
+}
+
+.myApp-card:hover {
+
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+ }
+ 
+
+/* Style for selected card */
+.myApp-card.selected {
+background-color: #e9ecef; /* Light gray background */
+border: 2px solid #007bff; /* Blue border */
+}
+/* Card header */
+.myApp-card-header {
+background-color: #f8f9fa;
+border-bottom: 1px solid #dee2e6;
+}
+
+/* Card title */
+.myApp-card-title {
+margin-bottom: 0;
+}
+
+/* Card text */
+.myApp-card-text {
+margin-bottom: 10px;
+font-weight: 500;
+}
+
+/* Card footer */
+.myApp-card-footer {
+  border-top: 1px solid #dee2e6;
+}
+
+/* Badge for status */
+.myApp-badge {
+margin-left: 5px;
+}
+
+
+.no-notes {
+font-style: italic; /* Italic text */
+color: #7c7c7c; /* Light gray color */
+}
+
+.grid-card, .table-card, .advanced-search-card {
+background: linear-gradient(to right, #bac4c7, #EBF3F5, #EBF3F5, #bac4c7);
+}
+
+
+
+
+/* Additional CSS for checkbox */
+.checkbox-container {
+position: absolute;
+top: 30px; /* Adjust as needed */
+right: 10px; /* Adjust as needed */
+transform: translateY(-50%);
+}
+
+.checkbox-container .checkmark {
+display: inline-block;
+width: 20px;
+height: 20px;
+background-color: #eee;
+border-radius: 4px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+background-color: #007bff; /* Blue background when checked */
+}
+
+.spinner-container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%; /* Adjust based on your layout */
+}
+
+.no-results-found {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%; /* Adjust based on your layout */
+font-size: 1.2em; /* Adjust font size */
+color: #666; /* Adjust text color */
+background-color: #f9f9f9; /* Adjust background color */
+border: 1px solid #ddd; /* Adjust border color */
+padding: 20px; /* Adjust padding */
+border-radius: 5px; /* Adjust border radius */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.selected {
+background-color: #d9edf7; /* Light blue background */
+color: #333; /* Dark text color */
+}
+
+
+tr:hover {
+cursor: pointer;
+}
+
+
+.test-class{
+background-color: blue;
+}
+
+
+/* your-component.component.css */
+::ng-deep.mat-autocomplete-panel {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+::ng-deep.mat-autocomplete-panel.mat-option {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+::ng-deep.mat-autocomplete-panel.mat-option:hover {
+  background-color: #e9ecef;
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+}
+
+.dropdown-card {
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  width: 300px; /* Set a specific width for the card */
+}
+
+.dropdown-content {
+  color: black; /* Set the text color to black */
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  text-decoration: none;
+  color: inherit; /* Inherit the black color from .dropdown-content */
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+
+.action-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Icon text and size styling */
+.icon-text {
+  font-size: 8px; /* Adjust as needed */
+  margin-left: 0px; /* Adjust as needed */
+}
+
+.icon-label {
+  vertical-align: middle; /* Aligns the label vertically in the middle */
+  margin-left: 5px; /* Adds some space between the icon and the label */
+  font-size: 14px; /* Sets the font size for the labels */
+  color: #000000; /* Sets a lighter color for the labels */
+}
+
+.export-buttons {
+  display: flex;
+  align-items: center;
+  display: inline-flex;
+}
+
+.icon-refresh { color: blue; }
+.icon-list { color: green; }
+.icon-grid { color: red; }
+.icon-sort { color: purple; }
+.icon-sort-asc { color: orange; }
+.icon-sort-desc { color: brown; }
+.icon-excel { color: green; }
+.icon-csv { color: rgb(141, 141, 0); }
+.icon-json { color: blue; }
+.icon-text { color: grey; }
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+.table-responsive table {
+  width: 100%;
+  white-space: nowrap;
+}
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px; /* Adjust based on your design */
+  display: inline-block;
+  vertical-align: top;
+}
+mat-cell, mat-header-cell {
+  padding: 0 16px;
+  box-sizing: border-box;
+}

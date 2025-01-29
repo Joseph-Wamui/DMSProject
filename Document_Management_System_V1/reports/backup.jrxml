@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_14" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ed8d2a1-15cb-46a9-9fcb-90784544c354">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="project Dms"/>
+	<parameter name="startDate" class="java.lang.String"/>
+	<parameter name="endDate" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select 
+document_name,
+backup_location,
+back_up_date,
+backup_id,
+organization_name,
+office_location,
+website_url,
+phone_number,
+email_address,
+logo 
+from backup, organization_info 
+where back_up_date between $P{startDate} and $P{endDate}
+order by backup_id]]>
+	</queryString>
+	<field name="backup_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="backup_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="backup_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="backup"/>
+	</field>
+	<field name="back_up_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="back_up_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="back_up_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="backup"/>
+	</field>
+	<field name="backup_location" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="department"/>
+		<property name="com.jaspersoft.studio.field.label" value="department"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="backup"/>
+	</field>
+	<field name="document_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="document_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="document_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="backup"/>
+	</field>
+	<field name="office_location" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="city"/>
+		<property name="com.jaspersoft.studio.field.label" value="city"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="organization_info"/>
+	</field>
+	<field name="email_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="organization_info"/>
+	</field>
+	<field name="organization_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="organization_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="organization_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="organization_info"/>
+	</field>
+	<field name="phone_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="phone_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="phone_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="organization_info"/>
+	</field>
+	<field name="website_url" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="website_url"/>
+		<property name="com.jaspersoft.studio.field.label" value="website_url"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="organization_info"/>
+	</field>
+	<field name="logo" class="byte[]"/>
+	<group name="backup_id">
+		<groupExpression><![CDATA[$F{backup_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement x="90" y="10" width="310" height="30" uuid="1fc25874-0eb9-40a3-b9e4-34c3139c1f7b"/>
+				<textElement textAlignment="Center">
+					<font size="18" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{organization_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="40" width="250" height="20" uuid="d6a2c56b-4616-43b3-b5fe-5b32e3869a0b"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{website_url}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="60" width="250" height="20" uuid="1a02dcc5-301f-46b7-8fef-c1c4b7088dbf"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="80" width="250" height="20" uuid="0e3e8024-b009-49e5-8f9e-ac65b1f32e53"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phone_number}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement mode="Transparent" x="450" y="10" width="100" height="16" forecolor="#323775" backcolor="rgba(50, 36, 179, 0.3882353)" uuid="d3c0ce8a-d716-4409-81e8-7d06a3694dc4"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="80" height="80" uuid="3469a64c-1e56-4d6d-81da-d56c4110d247"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream($F{logo})]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="220" height="20" forecolor="#14489F" uuid="b703cd3e-9ff2-4d1b-8dc1-3366f1ad4af5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Document Management system]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="348" y="0" width="197" height="20" forecolor="#CF5432" backcolor="rgba(209, 199, 199, 0.42352942)" uuid="e06e4210-8d12-49ed-832e-b412bdffc851">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Documents Back-Up REPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="550" height="20" forecolor="#807B7A" backcolor="rgba(21, 72, 158, 0.38039216)" uuid="a2f90a8a-6df4-4fa7-bdf9-c99776c84ed2">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="100" height="30" forecolor="#F7F7F7" backcolor="#15499F" uuid="f00dd999-182c-46e3-b3d4-89b3df4fb96a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d20db70d-a3af-4f71-905c-9c9583f7e545"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+					<paragraph spacingBefore="5"/>
+				</textElement>
+				<text><![CDATA[Backup ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="0" width="188" height="30" forecolor="#F7F7F7" backcolor="#09A3E4" uuid="fb3c98f6-2303-4961-b5d0-b9f78136ca89">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1228db3c-2c2e-4d77-a95a-75fd8d415cd5"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+					<paragraph spacingBefore="5"/>
+				</textElement>
+				<text><![CDATA[Document Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="290" y="0" width="149" height="30" forecolor="#F7F7F7" backcolor="#15499F" uuid="7894385f-1d04-4644-9678-9ac3b947831e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37994cdc-12ec-4858-b4dc-4fec73489bfc"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+					<paragraph spacingBefore="5"/>
+				</textElement>
+				<text><![CDATA[Backup Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="0" width="110" height="30" forecolor="#F7F7F7" backcolor="#09A3E4" uuid="2f0cb93c-9acd-4b1d-abd3-e531f0f64b8c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0772a59-d7de-453f-9703-2c9f8ebada6f"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+					<paragraph spacingBefore="5"/>
+				</textElement>
+				<text><![CDATA[Back Up Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="497d5953-3d98-4af7-b4c2-1871bc6cc8fa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d20db70d-a3af-4f71-905c-9c9583f7e545"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{backup_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="188" height="30" uuid="1664d497-dbb3-442f-9c1a-baf7597fc9a5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1228db3c-2c2e-4d77-a95a-75fd8d415cd5"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{document_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="149" height="30" uuid="0931405f-5347-4f1c-b4ad-86277b0385da">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37994cdc-12ec-4858-b4dc-4fec73489bfc"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{backup_location}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="110" height="30" uuid="f121f9f2-bf32-444b-adbf-8d1881b165ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0772a59-d7de-453f-9703-2c9f8ebada6f"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{back_up_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="10" y="4" width="280" height="13" backcolor="#E6E6E6" uuid="f1128bc0-7fe7-4284-a5c0-490c56939dce"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="295" y="4" width="100" height="16" backcolor="rgba(219, 215, 215, 0.5254902)" uuid="1780b605-c2cb-4ce3-857f-f4c55907a841"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="550" height="20" forecolor="#807B7A" backcolor="rgba(21, 72, 158, 0.38039216)" uuid="3f8a0bd8-a246-4bb9-8710-c6c4e1d8c4bb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="20" width="240" height="20" uuid="d8483f31-a5b3-4153-b196-76d8cca06906"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{office_location}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,38 @@
+
+/* styles.css */
+.sb-sidenav{
+    background: linear-gradient(to bottom, #b4c7e7 0%, #e9e7e7 50%, #b4c7e7 100%);
+    color: #e9e7e7;
+}
+.icon {
+    color: rgb(12, 12, 12);
+  }
+  
+  
+.sub-menu {
+    display: none;
+   }
+   
+   .sub-menu.show {
+    display: block;
+   }
+   .sb-sidenav-footer {
+    
+    background-color: transparent !important;
+   }
+   .role-text h3{
+    color: rgb(12, 12, 150);
+    font-family: Arial, Helvetica, sans-serif;
+   }
+   .small{
+    color: rgb(1, 1, 12);
+    font-family: Arial, Helvetica, sans-serif;
+   }
+   .sb-sidenav {
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1); /* Horizontal offset, vertical offset, blur radius, color */
+}
+@media (min-width: 768px) {
+    .sb-sidenav {
+        box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+    }
+}

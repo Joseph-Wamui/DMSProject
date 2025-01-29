@@ -1,0 +1,94 @@
+<div class="form-container">
+ <div class="row justify-content-center mt-5">
+  <div class="col-lg-12">
+    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()" class="shadow-lg p-3 rounded bg-white">
+      <h2 class="mb-4 text-center">Create New User</h2>
+      <!--First Name-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="firstName" required pattern="[a-zA-Z]*">
+        </mat-form-field>
+      </div>
+    
+      <!--Last Name-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="lastName" required pattern="[a-zA-Z]+">
+        </mat-form-field>
+      </div>
+    
+      <!--Employee Number-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Employee Number</mat-label>
+          <mat-icon matPrefix>badge</mat-icon>
+          <input matInput formControlName="employeeNumber" required pattern="[0-9]*">
+        </mat-form-field>
+      </div>
+    
+      <!--Email Address-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <mat-icon matPrefix>mail</mat-icon>
+          <input matInput formControlName="emailAddress" required>
+        </mat-form-field>
+      </div>
+    
+      <!--Phone Number-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <mat-icon matPrefix>phone</mat-icon>
+          <input matInput formControlName="phoneNumber" required pattern="[0-9]*">
+        </mat-form-field>
+      </div>
+    
+      <!--Role-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-select formControlName="role" required>
+            <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+    
+      <!--Password-->
+      <div fxLayout="row" fxLayoutGap="8px" class="align-items-center mt-4">
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Password</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input type="password" matInput formControlName="password" readonly>
+          <button mat-button type="button" matSuffix class="generate-password-button" (click)="generate()">Generate Password</button>
+          <p>{{ password }}</p>
+          
+        </mat-form-field>
+      </div>
+    
+      
+      <!--Department-->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Department</mat-label>
+          <mat-icon matPrefix>house</mat-icon>
+          <input matInput formControlName="department" required pattern="[a-zA-Z]+">
+        </mat-form-field>
+      </div>
+    
+      <!--Butons-->
+      <div class="button-container mt-4 text-center">
+        <button type="button" class="btn btn-outline-secondary mr-3" (click)="Reset()">Reset</button>
+        <mat-spinner class="spinner" *ngIf="loading" [diameter]="50"></mat-spinner>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Create Role</h2>
+  <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Role Name</mat-label>
+      <input matInput formControlName="roleName" placeholder="Enter role name" required>
+    </mat-form-field>
+    <mat-card >
+      <mat-card-content>
+          <h2 class="example-h2">Select Privileges:</h2>
+          <section class="example-section" formArrayName="privileges">
+            <div class="privileges-scroll-container">
+              <div class="privileges-container">
+                <div *ngFor="let privilege of privileges; let i = index" class="privilege-item">
+                  <mat-checkbox class="example-margin" color="primary" [formControlName]="i">{{ privilege }}</mat-checkbox>
+                </div>
+              </div>
+            </div>
+          </section>
+      </mat-card-content> 
+    </mat-card>
+    <div class="button-container">
+      <button mat-raised-button class="mt-4 mb-4" color="primary" type="submit">Create Role</button>
+    </div>
+  </form>
+</div>

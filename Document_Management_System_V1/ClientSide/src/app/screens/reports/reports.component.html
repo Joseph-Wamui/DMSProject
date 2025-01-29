@@ -1,0 +1,60 @@
+<header>
+  <a class="reports" routerLink="/report">
+    <h2>Reports</h2>
+  </a>
+</header>
+
+<div class="containers">
+  <div class="space"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'users'">
+        <app-report-card title="Users Report" tableId="5" url="/api/v1/users/FetchAllUsers" apiEndpoint="user-pdf" cardId="users" (expand)="expandCard($event)" [expanded]="expandedCardId === 'users'"></app-report-card>
+      </div>
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'userLogs'">
+        <app-report-card title="User Logs Report" tableId="6" url="/api/v1/reports/user_logs" apiEndpoint="user_logs-pdf" cardId="userLogs" (expand)="expandCard($event)" [expanded]="expandedCardId === 'userLogs'"></app-report-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'document'">
+        <app-report-card title="Document Report" tableId="3" url="/api/v1/Documents/FetchAllDocuments" apiEndpoint="document-pdf" cardId="document" (expand)="expandCard($event)" [expanded]="expandedCardId === 'document'"></app-report-card>
+      </div>
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'document_logs'">
+        <app-report-card title="Document Logs Report" tableId="4" url="/api/v1/reports/document_logs" apiEndpoint="document_logs-pdf" cardId="document_logs" (expand)="expandCard($event)" [expanded]="expandedCardId === 'document_logs'"></app-report-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'storage'">
+        <app-report-card title="Storage Report"  url="/api/v1/reports/storage" apiEndpoint="storage-pdf" cardId="storage" (expand)="expandCard($event)" [expanded]="expandedCardId === 'storage'"></app-report-card>
+      </div>
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'versions'">
+        <app-report-card title="Versions Report" tableId="7" url="/api/v1/Versions/getAllVersions" apiEndpoint="versions-pdf" cardId="versions" (expand)="expandCard($event)" [expanded]="expandedCardId === 'versions'"></app-report-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'backup'">
+        <app-report-card title="Backup Report" tableId="2" url="/api/v1/reports/back-up" apiEndpoint="back-up-pdf" cardId="backup" (expand)="expandCard($event)" [expanded]="expandedCardId === 'backup'"></app-report-card>
+      </div>
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'archives'">
+        <app-report-card title="Archiving Report" tableId="1" url="/api/v1/reports/archiving" apiEndpoint="archiving-pdf" cardId="archives" (expand)="expandCard($event)" [expanded]="expandedCardId === 'archives'"></app-report-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'search'">
+        <app-report-card title="Search Report" url="/api/v1/reports/search" apiEndpoint="search-pdf" cardId="search" (expand)="expandCard($event)" [expanded]="expandedCardId === 'search'"></app-report-card>
+      </div>
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'workflow'">
+        <app-report-card title="Workflows Report" tableId="8" url="/api/v1/reports/workflow" apiEndpoint="workflows-pdf" cardId="workflow" (expand)="expandCard($event)" [expanded]="expandedCardId === 'workflow'"></app-report-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'deleted-doc'">
+        <app-report-card title="Deleted Documents Report" url="/api/v1/reports/deleted_documents" apiEndpoint="deleted-documents-pdf" cardId="deleted-doc" (expand)="expandCard($event)" [expanded]="expandedCardId === 'deleted-doc'"></app-report-card>
+      </div>
+      <div class="col-12 col-md-6 mb-4" *ngIf="expandedCardId === '' || expandedCardId === 'deleted-users'">
+        <app-report-card title="Deleted Users Report" url="/api/v1/reports/deleted_users" apiEndpoint="deleted_users-pdf" cardId="deleted-users" (expand)="expandCard($event)" [expanded]="expandedCardId === 'deleted-users'"></app-report-card>
+      </div>
+    </div>
+  </div>
+</div>

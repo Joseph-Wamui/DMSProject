@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <!-- Iterate over the crumbs array -->
+    <li class="breadcrumb-item" *ngFor="let crumb of crumbs; last as isLast">
+      <a href="#" *ngIf="isLast; else notLast">{{ crumb }}</a>
+      <ng-template #notLast>
+        <button mat-button disabled>{{ crumb }} <span class="material-icons">chevron_right</span></button>
+      </ng-template>
+    </li>
+  </ol>
+</nav>

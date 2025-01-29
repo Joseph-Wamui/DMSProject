@@ -1,0 +1,126 @@
+<div class= "container">
+  <div class="card">
+    <div class="card-header d-flex align-items-center">
+      <h2 class="mb-0">Upload Document</h2>
+      <div class="search-container">
+        <div class="input-group align-items-center">
+          <input type="text" placeholder="Filter documents..." class="form-control search-input" (keyup)="applyFilter($event)">
+          <span class="search-icon">
+            <i class="fas fa-search fs-5"></i>
+          </span>
+          <!-- Dropdown Button -->
+          <div class="dropdown">
+            <button mat-mini-fab color="primary" class="ms-1 mb-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <mat-icon>add</mat-icon>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" (click)="addRow(); $event.stopPropagation()">Add New Row</a>
+              <a class="dropdown-item" (click)="triggerFileInput(); $event.stopPropagation()">Add Multiple Files</a>
+            </div>
+            
+            <!-- Hidden file input for selecting multiple files -->
+            <input type="file" #fileInput (change)="onMultipleFilesSelected($event)" multiple style="display: none;" />
+            
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>File name</th>
+          <th>File type</th>
+          <th>File size</th>
+          <th>Select file</th>
+          <th>Download</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="table-row-height"
+          *ngFor="let row of displayedRows; let i = index"
+        >
+          <td>{{(pageIndex * pageSize) + (i + 1) }}</td>
+          <td>
+            <mat-form-field>
+              <mat-label>File Name <sup style="color: red;"><i class="fas fa-asterisk"></i></sup></mat-label>
+              <input
+                matInput
+                readonly
+                [(ngModel)]="row.fileName"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>File Type <sup style="color: red;"><i class="fas fa-asterisk"></i></sup></mat-label>
+              <input
+                matInput
+                readonly
+                [(ngModel)]="row.fileType"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>File Size<sup style="color: red;"><i class="fas fa-asterisk"></i></sup></mat-label>
+              <input
+                matInput
+                readonly
+                [(ngModel)]="row.fileSize"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <input
+              type="file"
+              (change)="selectFile($event, i)"
+              class="form-control-file text-center mt-2"
+            />
+          </td>
+          <td>
+            <button mat-icon-button class="settings-button">
+              <mat-icon>save_alt</mat-icon>
+            </button>
+          </td>
+          <td>
+            <div class="d-flex">
+              <button
+                mat-icon-button
+                class="settings-button"
+                (click)="navigateToEditMetadata(i)"
+              >
+                <mat-icon>settings</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                class="delete-button"
+                (click)="removeRow(i)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="isLoading" class="spinner">
+      <mat-progress-spinner mode="indeterminate" [diameter]="50"></mat-progress-spinner>
+    </div>
+    <div class="card-footer">
+      <app-paginator
+        [length]="rows.length"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="handlePageChange($event)"
+      >
+      </app-paginator>
+    </div>
+    <div *ngIf="multiple" class="d-flex justify-content-end me-3 mb-3">
+      <button type="submit" class="btn btn-primary btn-block" (click)="uploadMultipleDocuments()">Upload Multiple Files</button>
+    </div>
+    
+</div>

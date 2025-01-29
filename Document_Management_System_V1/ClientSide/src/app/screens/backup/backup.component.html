@@ -1,0 +1,86 @@
+<!-- backup.component.html -->
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Backed Up Documents</h2>
+    <div class="search-container">
+      <div class="input-group">
+        <input 
+          type="text" 
+          placeholder="Search documents" 
+          class="form-control search-input" 
+          [(ngModel)]="searchTerm" 
+          (click)="applyBackedUpFilter($event)"
+        >
+        <div class="input-group-append">
+          <button mat-icon-button class="btn btn-light">
+            <i class="fas fa-search text-primary"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="export-buttons mb-3 d-flex justify-content-end">
+      <button mat-icon-button color="primary" class="mr-2" (click)="exportToExcel()" aria-label="Export to Excel">
+        <i class="fas fa-file-excel export-icon"></i>
+        <span class="icon-text">Excel</span>
+      </button>
+      <button mat-icon-button color="primary" class="mr-2" (click)="exportToCSV()" aria-label="Export to CSV">
+        <i class="fas fa-file-csv export-icon"></i>
+        <span class="icon-text">CSV</span>
+      </button>
+      <button mat-icon-button color="primary" class="mr-2" (click)="exportToJSON()" aria-label="Export to JSON">
+        <i class="fas fa-file-code export-icon"></i>
+        <span class="icon-text">JSON</span>
+      </button>
+      <button mat-icon-button color="primary" class="mr-2" (click)="exportToText()" aria-label="Export to Text">
+        <i class="fas fa-file-alt export-icon"></i>
+        <span class="icon-text">Text</span>
+      </button>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let i = index">{{i+1}} </td>
+    </ng-container>
+
+    <!-- Document Name Column -->
+    <ng-container matColumnDef="documentName">
+      <th mat-header-cell *matHeaderCellDef> Document Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.documentName}} </td>
+    </ng-container>
+
+    <!-- File Type Column -->
+    <ng-container matColumnDef="fileType">
+      <th mat-header-cell *matHeaderCellDef> File Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.fileType}} </td>
+    </ng-container>
+
+    <!-- Document Name Column -->
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef> Department</th>
+      <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+    </ng-container>
+
+    <!-- File Type Column -->
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef> Created by </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
+    </ng-container>
+
+    <!-- File Type Column -->
+    <ng-container matColumnDef="backUpDate">
+      <th mat-header-cell *matHeaderCellDef> Backup Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.backUpDate | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div *ngIf="loading" class="spinner">
+    <mat-progress-spinner mode="indeterminate" [diameter]="50"></mat-progress-spinner>
+  </div>
+  <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="handlePageChange($event)"></mat-paginator>
+</div>
